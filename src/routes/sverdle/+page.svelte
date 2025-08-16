@@ -8,15 +8,6 @@
 		data: PageData;
 		form: ActionData;
 	}
-	/**
-	 * @typedef {Object} Props
-	 * @property {import('./$types').PageData} data
-	 * @property {import('./$types').ActionData} form
-	 */
-
-	/**
-	 * @type {Props}
-	 */
 	let { data, form = $bindable() }: Props = $props();
 
 	/** Whether the user prefers reduced motion */
@@ -38,13 +29,11 @@
 		/**
 		 * A map of classnames for all letters that have been guessed,
 		 * used for styling the keyboard
-		 * @type {Record<string, 'exact' | 'close' | 'missing'>}
 		 */
 		let classnames: Record<string, 'exact' | 'close' | 'missing'> = {};
 		/**
 		 * A map of descriptions for all letters that have been guessed,
 		 * used for adding text for assistive technology (e.g. screen readers)
-		 * @type {Record<string, string>}
 		 */
 		let description: Record<string, string> = {};
 		data.answers.forEach((answer, i) => {
@@ -66,11 +55,10 @@
 	/**
 	 * Modify the game state without making a trip to the server,
 	 * if client-side JavaScript is enabled
-	 * @param {MouseEvent} event
 	 */
 	function update(event: MouseEvent) {
 		event.preventDefault();
-		const key = /** @type {HTMLButtonElement} */ (event.target as HTMLButtonElement).getAttribute(
+		const key = (event.target as HTMLButtonElement).getAttribute(
 			'data-key'
 		);
 
@@ -85,7 +73,6 @@
 	/**
 	 * Trigger form logic in response to a keydown event, so that
 	 * desktop users can use the keyboard to play the game
-	 * @param {KeyboardEvent} event
 	 */
 	function keydown(event: KeyboardEvent) {
 		if (event.metaKey) return;

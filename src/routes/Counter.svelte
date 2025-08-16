@@ -4,10 +4,6 @@
 	const count = new Spring(0);
 	const offset = $derived(modulo(count.current, 1));
 
-	/**
-	 * @param {number} n
-	 * @param {number} m
-	 */
 	function modulo(n: number, m: number) {
 		// handle negative numbers
 		return ((n % m) + m) % m;

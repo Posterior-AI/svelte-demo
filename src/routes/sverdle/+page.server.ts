@@ -2,7 +2,6 @@ import { fail } from '@sveltejs/kit';
 import { Game } from './game';
 import type { PageServerLoad, Actions } from './$types';
 
-/** @satisfies {import('./$types').PageServerLoad} */
 export const load = (({ cookies }) => {
 	const game = new Game(cookies.get('sverdle'));
 
@@ -25,7 +24,6 @@ export const load = (({ cookies }) => {
 	};
 }) satisfies PageServerLoad;
 
-/** @satisfies {import('./$types').Actions} */
 export const actions = {
 	/**
 	 * Modify game state in reaction to a keypress. If client-side JavaScript
@@ -56,7 +54,7 @@ export const actions = {
 		const game = new Game(cookies.get('sverdle'));
 
 		const data = await request.formData();
-		const guess = /** @type {string[]} */ data.getAll('guess') /***/ as string[];
+		const guess = data.getAll('guess') as string[];
 
 		if (!game.enter(guess)) {
 			return fail(400, { badGuess: true });
