@@ -40,5 +40,8 @@
 		"typescript-eslint": "^8.41.0",
 		"vite": "^7.1.3",
 		"vite-plugin-devtools-json": "^1.0.0"
+	},
+	"dependencies": {
+		"svelte-tagger": "^0.1.2"
 	}
 }
