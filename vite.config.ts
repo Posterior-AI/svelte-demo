@@ -1,11 +1,21 @@
 import devtoolsJson from 'vite-plugin-devtools-json';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { svelteTagger } from "svelte-tagger";
+
+import { defineConfig, type PluginOption } from 'vite';
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit(), devtoolsJson()],
+	plugins: [
+		svelteTagger({
+			suffix: '',
+			enhancedDebug: true,
+			exclude:['.svelte-kit']
+		}) as PluginOption,
+		tailwindcss(), sveltekit(), devtoolsJson(),
+
+	],
 	ssr: {
 		noExternal: ["svelte-hero-icons"],
-	}
+	},
 });
