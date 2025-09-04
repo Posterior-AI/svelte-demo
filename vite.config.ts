@@ -15,6 +15,11 @@ export default defineConfig({
 		tailwindcss(), sveltekit(), devtoolsJson(),
 
 	],
+	server: {
+		watch: {
+			ignored: ["**/node_modules/**", "**/.git/**", "**/.svelte-kit/**"]
+		}
+	},
 	ssr: {
 		noExternal: ["svelte-hero-icons"],
 	},
