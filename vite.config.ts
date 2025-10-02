@@ -14,7 +14,7 @@ export default defineConfig({
 		}) as PluginOption,
 		projectExporter({
 			allowedOrigin: 'http://localhost:5176'
-		}),
+		}) as PluginOption,
 		tailwindcss(), sveltekit(), devtoolsJson(),
 
 	],
