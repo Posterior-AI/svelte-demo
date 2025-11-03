@@ -2,7 +2,7 @@ import devtoolsJson from 'vite-plugin-devtools-json';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { svelteTagger } from "svelte-tagger";
-import { defineConfig, type PluginOption } from 'vite';
+import { createLogger, defineConfig, type PluginOption } from 'vite';
 import { projectExporter } from "vite-zipper";
 
 type CleanupHook = () => void | Promise<void>;
@@ -50,17 +50,34 @@ const cleanupManager = {
   }
 } as any;
 
+// const logger = createLogger()
+// const loggerError = logger.error;
+
+// logger.error = (msg, options) => {
+//   console.warn("msg")
+//   console.warn(msg)
+//   console.warn("msg")
+//   loggerError(msg, options)
+
+// }
+
 export default defineConfig({
+  // customLogger:logger,
+  clearScreen:false,
   plugins: [
     taggerPlugin,
     exporterPlugin,
     tailwindcss(), sveltekit(), devtoolsJson(),
-    cleanupManager
+    cleanupManager,
   ],
   server: {
     allowedHosts: ['${PREVIEW_ALLOWED_HOST}'],
     watch: {
-      ignored: ["**/node_modules/**", "**/.git/**", "**/.svelte-kit/**"]
+      ignored: ["**/node_modules/**", "**/.git/**", "**/.svelte-kit/**"],
+    },
+    hmr:{
+      overlay:false,
+      timeout:100,
     }
   },
   ssr: {
