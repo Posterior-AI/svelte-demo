@@ -24,7 +24,7 @@ const taggerPlugin = svelteTagger({
 __registerPluginCleanup(taggerPlugin);
 
 const exporterPlugin = projectExporter({
-  allowedOrigin: '${PROJECT_EXPORTER_ALLOWED_ORIGIN}'
+  allowedOrigin: 'http://localhost:5173'
 }) as PluginOption;
 
 __registerPluginCleanup(exporterPlugin);
@@ -71,7 +71,7 @@ export default defineConfig({
     cleanupManager,
   ],
   server: {
-    allowedHosts: ['${PREVIEW_ALLOWED_HOST}'],
+    allowedHosts: ['http://localhost:5173'],
     watch: {
       ignored: ["**/node_modules/**", "**/.git/**", "**/.svelte-kit/**"],
     },
