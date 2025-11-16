@@ -42,6 +42,6 @@
 		"vite-plugin-devtools-json": "^1.0.0",
 		"svelte-tagger": "^0.1.4",
 		"vite-zipper": "^0.1.5",
-		"@sveltejs/adapter-cloudflare": "^7.2.4"
+		"@sveltejs/adapter-static": "^3.0.10"
 	}
 }
