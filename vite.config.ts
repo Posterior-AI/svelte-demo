@@ -24,7 +24,7 @@ const taggerPlugin = svelteTagger({
 __registerPluginCleanup(taggerPlugin);
 
 const exporterPlugin = projectExporter({
-  allowedOrigin: 'http://localhost:5173'
+  allowedOrigins: ['http://localhost:5173']
 }) as PluginOption;
 
 __registerPluginCleanup(exporterPlugin);
