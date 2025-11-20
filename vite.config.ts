@@ -4,6 +4,7 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { svelteTagger } from "svelte-tagger";
 import { createLogger, defineConfig, type PluginOption } from 'vite';
 import { projectExporter } from "vite-zipper";
+import {assetUploader} from 'vite-asset-uploader';
 
 type CleanupHook = () => void | Promise<void>;
 const __PLUGIN_CLEANUP_HOOKS: CleanupHook[] = [];
@@ -28,6 +29,14 @@ const exporterPlugin = projectExporter({
 }) as PluginOption;
 
 __registerPluginCleanup(exporterPlugin);
+
+const uploadPluggin = assetUploader({
+      allowedOrigin: "http://localhost:5173", 
+      destinationDir: "./static/assets", 
+      uploadPath: "/api/upload-asset", 
+}) as PluginOption;
+
+__registerPluginCleanup(uploadPluggin);
 
 const cleanupManager = {
   name: 'vite-cleanup-manager',
@@ -67,6 +76,7 @@ export default defineConfig({
   plugins: [
     taggerPlugin,
     exporterPlugin,
+    uploadPluggin,
     tailwindcss(), sveltekit(), devtoolsJson(),
     cleanupManager,
   ],
