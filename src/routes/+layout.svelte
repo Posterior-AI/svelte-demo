@@ -12,8 +12,12 @@
 	import { onMount } from 'svelte';
 	import { browser, dev } from '$app/environment';
 
+	const R=()=>Object.keys(import.meta.glob('/src/routes/**/+page.svelte',{eager:true})).map(p=>p.replace(/^\/src\/routes/,'').replace(/\/\+page\.svelte$/,'').replace(/\/$/,'')||'/').sort();
+	browser&&dev&&(window.BYOB_CORE?.reportRoutes(R()),import.meta.hot?.on('vite:afterUpdate',()=>window.BYOB_CORE?.reportRoutes(R())));
+
+
 	onMount(() => {
-		if (browser && dev && typeof window != "undefined" ) {
+		if (browser && dev && typeof window != 'undefined') {
 			if (window.BYOB_CORE && typeof window.BYOB_CORE.connectToViteHMR === 'function') {
 				window.BYOB_CORE.connectToViteHMR(import.meta.hot);
 			} else {
@@ -23,6 +27,7 @@
 			}
 		}
 	});
+	
 </script>
 
 <svelte:head>
