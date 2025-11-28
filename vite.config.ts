@@ -5,7 +5,7 @@ import { svelteTagger } from 'svelte-tagger';
 import { projectExporter } from 'vite-zipper';
 import { assetUploader } from 'vite-asset-uploader';
 import { defineConfig, type PluginOption } from 'vite';
-import { routeScanner } from 'vite-route-scanner'; // adjust path if needed
+import { routeScanner } from 'vite-route-scanner'; 
 
 type CleanupHook = () => void | Promise<void>;
 const __PLUGIN_CLEANUP_HOOKS: CleanupHook[] = [];
@@ -28,7 +28,7 @@ const exporterPlugin = projectExporter({
 __registerPluginCleanup(exporterPlugin);
 
 const uploadPlugin = assetUploader({
-  allowedOrigin: 'http://localhost:5173',
+  allowedOrigins: ['http://localhost:5173'],
   destinationDir: './static/assets',
   uploadPath: '/api/upload-asset'
 }) as PluginOption;
@@ -60,10 +60,6 @@ export default defineConfig({
   clearScreen: false,
   server: {
     allowedHosts: ['http://localhost:5173'],
-    watch: {
-      usePolling: true,
-      interval: 200
-    },
     hmr: {
       overlay: false,
       timeout: 100
