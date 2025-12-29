@@ -16,17 +16,17 @@
 
 ## 📖 Overview
 
-Welcome to the **BYOB AI-Powered Workspace** – your integrated development environment designed to revolutionize how you build applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, and powerful project controls directly into your development workflow.
+Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, and powerful project controls directly into your development workflow.
 
 ## ✨ Features
 
 - 🤖 **Multi-Model AI Assistant** - Choose from Gemini, Grok, and GPT
-- 🎯 **Dual Operating Modes** - Strategic planning and direct code execution
-- ⚡ **Quick Actions** - One-click shortcuts for common tasks
+- 👁️ **Image Understanding** - Upload wireframes or screenshots; the AI converts them into pixel-perfect Svelte code.
+- 🎙️ **Voice Coding** - Dictate complex logic or CSS changes directly to the assistant.
 - 🎨 **Visual Editing Mode** - Direct UI manipulation without code
-- 📝 **Built-in Version Control** - Instant snapshots and rollback
-- 🔄 **Live Preview** - Real-time application updates
-
+- 🚀 **One-Click Deploy** - Ship to production in seconds with zero configuration.
+- 📝 **Built-in Version Control** - "Time Travel" with instant snapshots and rollback.
+- 📱 **PWA Support** - Install BYOB on your phone to build and edit on the go.
 ---
 
 ## 🧠 Core Concepts: The AI Assistant
@@ -161,3 +161,6 @@ Once you reach a stable milestone:
 
 ---
 
+<div align="center">
+**[Start Building Now at BYOB.studio](https://byob.studio)**
+</div>
