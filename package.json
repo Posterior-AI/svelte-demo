@@ -44,6 +44,6 @@
 		"vite-asset-uploader": "^0.2.0",
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vite-route-scanner": "^0.1.0",
-		"vite-zipper": "^0.1.9"
+		"vite-zipper": "^0.2.0"
 	}
 }
