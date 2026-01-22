@@ -1,23 +1,20 @@
 <script>
-  import {
-    Icon,
-    RocketLaunch,
-    CodeBracket,
-    ChatBubbleLeftRight,
-    Eye,
-    CpuChip,
-    Bolt,
-    CircleStack,
-    WrenchScrewdriver,
-    CheckCircle,
-    LightBulb,
-    CursorArrowRays,
-    Clock,
-    PlayCircle,
-    ArrowUturnLeft,
-    RectangleGroup,
-    DocumentChartBar,
-  } from "svelte-hero-icons";
+  // Import Icon Components directly
+  import RocketLaunch from '~icons/heroicons/rocket-launch';
+  import CodeBracket from '~icons/heroicons/code-bracket';
+  import ChatBubbleLeftRight from '~icons/heroicons/chat-bubble-left-right';
+  import Eye from '~icons/heroicons/eye';
+  import CpuChip from '~icons/heroicons/cpu-chip';
+  import Bolt from '~icons/heroicons/bolt';
+  import CircleStack from '~icons/heroicons/circle-stack';
+  import WrenchScrewdriver from '~icons/heroicons/wrench-screwdriver';
+  import CheckCircle from '~icons/heroicons/check-circle';
+  import LightBulb from '~icons/heroicons/light-bulb';
+  import CursorArrowRays from '~icons/heroicons/cursor-arrow-rays';
+  import PlayCircle from '~icons/heroicons/play-circle';
+  import ArrowUturnLeft from '~icons/heroicons/arrow-uturn-left';
+  import RectangleGroup from '~icons/heroicons/rectangle-group';
+  import DocumentChartBar from '~icons/heroicons/document-chart-bar';
 
   const workspaceFeatures = [
     {
@@ -75,7 +72,7 @@
       ✨ Supercharged by AI
     </div>
     <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center gap-4">
-      <Icon src={RocketLaunch} class="h-12 w-12 text-[hsl(var(--pc))]" />
+      <RocketLaunch class="h-12 w-12 text-[hsl(var(--pc))]" />
       Welcome to Your BYOB Workspace
     </h1>
     <p class="mt-4 max-w-2xl text-lg text-[hsl(var(--pc)/0.9)]">
@@ -96,7 +93,7 @@
     <div class="container mx-auto px-6 space-y-12">
       <div class="text-center">
         <h2 class="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
-          <Icon src={CodeBracket} class="h-8 w-8 text-[hsl(var(--p))]" />
+          <CodeBracket class="h-8 w-8 text-[hsl(var(--p))]" />
           Workspace Layout & Features
         </h2>
         <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
@@ -115,7 +112,7 @@
             <ul class="mt-6 space-y-3 text-[hsl(var(--bc)/0.9)]">
               {#each feature.points as point}
                 <li class="flex items-center gap-2">
-                  <Icon src={CheckCircle} class="h-5 w-5 text-[hsl(var(--p))]" />
+                  <CheckCircle class="h-5 w-5 text-[hsl(var(--p))]" />
                   <span>{point}</span>
                 </li>
               {/each}
@@ -124,7 +121,7 @@
         {/each}
       </div>
       <div class="text-center text-[hsl(var(--bc)/0.8)] flex items-center justify-center gap-2 bg-[hsl(var(--b2))] rounded-lg p-4">
-          <Icon src={LightBulb} class="w-5 h-5 text-[hsl(var(--in))]" />
+          <LightBulb class="w-5 h-5 text-[hsl(var(--in))]" />
           <span class="font-semibold">Tip:</span> Swap panes, drag to resize, or minimize to focus—your workflow, your way!
       </div>
     </div>
@@ -162,7 +159,7 @@
              
              <div class="flex items-center gap-4">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--in))/0.15] text-[hsl(var(--in))]">
-                    <Icon src={model.icon} class="h-7 w-7" />
+                    <svelte:component this={model.icon} class="h-7 w-7" />
                 </div>
                 <h3 class="text-2xl font-bold">{model.name}</h3>
              </div>
@@ -189,7 +186,7 @@
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8">
                   <div class="flex items-center gap-4">
                       <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--in))/0.15] text-[hsl(var(--in))]">
-                          <Icon src={ChatBubbleLeftRight} class="h-7 w-7" />
+                          <ChatBubbleLeftRight class="h-7 w-7" />
                       </div>
                       <div>
                           <h3 class="text-2xl font-bold">Chat Mode</h3>
@@ -207,7 +204,7 @@
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8">
                   <div class="flex items-center gap-4">
                       <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--in))/0.15] text-[hsl(var(--in))]">
-                          <Icon src={WrenchScrewdriver} class="h-7 w-7" />
+                          <WrenchScrewdriver class="h-7 w-7" />
                       </div>
                       <div>
                           <h3 class="text-2xl font-bold">Tool Mode</h3>
@@ -277,7 +274,9 @@
               {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all changes with version snapshots. Track your project evolution effortlessly.'},
             ] as feature}
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6">
-                <Icon src={feature.icon} class="h-8 w-8 text-[hsl(var(--p))] mb-3" />
+                <div class="h-8 w-8 text-[hsl(var(--p))] mb-3">
+                  <svelte:component this={feature.icon} class="w-full h-full" />
+                </div>
                 <h3 class="font-bold text-lg">{feature.title}</h3>
                 <p class="text-[hsl(var(--bc)/0.7)] mt-1">{feature.desc}</p>
               </div>

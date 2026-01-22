@@ -6,6 +6,7 @@ import { projectExporter } from 'vite-zipper';
 import { assetUploader } from 'vite-asset-uploader';
 import { defineConfig, type PluginOption } from 'vite';
 import { routeScanner } from 'vite-route-scanner'; 
+import Icons from 'unplugin-icons/vite';
 
 type CleanupHook = () => void | Promise<void>;
 const __PLUGIN_CLEANUP_HOOKS: CleanupHook[] = [];
@@ -75,9 +76,13 @@ export default defineConfig({
     tailwindcss(),
     sveltekit(),
     devtoolsJson(),
-    cleanupManager
+    Icons({
+      compiler: 'svelte',
+      autoInstall: true,
+    }),
+    cleanupManager,
+
   ],
   ssr: {
-    noExternal: ['svelte-hero-icons']
   }
 });
