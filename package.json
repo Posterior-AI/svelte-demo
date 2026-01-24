@@ -37,6 +37,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.14",
 		"svelte": "^5.38.6",
 		"svelte-check": "^4.3.1",
+		"svelte-seo": "^1.6.1",
 		"svelte-tagger": "^0.1.4",
 		"tailwindcss": "^4.1.12",
 		"typescript": "^5.9.2",
@@ -46,6 +47,7 @@
 		"vite-asset-uploader": "^0.2.0",
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vite-route-scanner": "^0.1.0",
+		"vite-sitemap-gen": "^0.0.2",
 		"vite-zipper": "^0.2.0"
 	}
 }

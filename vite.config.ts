@@ -6,6 +6,9 @@ import { projectExporter } from 'vite-zipper';
 import { assetUploader } from 'vite-asset-uploader';
 import { defineConfig, type PluginOption } from 'vite';
 import { routeScanner } from 'vite-route-scanner'; 
+import { sitemapPlugin } from 'vite-sitemap-gen'; // Assuming installed or linked
+import { sitemapConfig } from './src/lib/sitemap-config';
+
 import Icons from 'unplugin-icons/vite';
 
 type CleanupHook = () => void | Promise<void>;
@@ -15,6 +18,13 @@ function __registerPluginCleanup(p: any) {
   const cb = (p && p.cleanup) || (p && p.onInvalidate);
   if (typeof cb === 'function') __PLUGIN_CLEANUP_HOOKS.push(cb);
 }
+
+const sitemapGenPlugin = sitemapPlugin({
+            baseUrl: sitemapConfig.baseUrl,
+            exclude: sitemapConfig.exclude,
+            additionalRoutes: sitemapConfig.additionalRoutes
+      }) as PluginOption;
+__registerPluginCleanup(sitemapGenPlugin);
 
 const taggerPlugin = svelteTagger({
   suffix: '',
@@ -73,6 +83,7 @@ export default defineConfig({
     exporterPlugin,
     uploadPlugin,
     routesPlugin,
+    sitemapGenPlugin,
     tailwindcss(),
     sveltekit(),
     devtoolsJson(),
