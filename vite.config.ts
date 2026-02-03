@@ -6,7 +6,7 @@ import { projectExporter } from 'vite-zipper';
 import { assetUploader } from 'vite-asset-uploader';
 import { defineConfig, type PluginOption } from 'vite';
 import { routeScanner } from 'vite-route-scanner'; 
-import { sitemapPlugin } from 'vite-sitemap-gen'; // Assuming installed or linked
+import { sitemapPlugin } from 'vite-sitemap-gen'; 
 import { sitemapConfig } from './src/lib/sitemap-config';
 
 import Icons from 'unplugin-icons/vite';
