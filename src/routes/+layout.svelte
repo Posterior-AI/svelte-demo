@@ -6,7 +6,7 @@
 	}
 
 	import '../app.css';
-	import favicon from '/favicon.ico';
+	import favicon from '$lib/assets/favicon.ico';
 
 	let { children } = $props();
 	import { onMount } from 'svelte';
