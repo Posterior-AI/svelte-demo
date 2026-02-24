@@ -1,5 +1,4 @@
 <script>
-  // Import Icon Components directly
   import RocketLaunch from '~icons/heroicons/rocket-launch';
   import CodeBracket from '~icons/heroicons/code-bracket';
   import ChatBubbleLeftRight from '~icons/heroicons/chat-bubble-left-right';
@@ -17,27 +16,27 @@
   import DocumentChartBar from '~icons/heroicons/document-chart-bar';
   import DeviceTablet from '~icons/heroicons/device-tablet-solid';
   import Window from '~icons/heroicons/window-solid';
+  import Sparkles from '~icons/heroicons/sparkles';
+  import Microphone from '~icons/heroicons/microphone';
+  import Photo from '~icons/heroicons/photo';
+  import ServerStack from '~icons/heroicons/server-stack';
+  import ApiWelcome from './ApiWelcome.svelte';
+
   const workspaceFeatures = [
     {
       icon: CodeBracket,
-      title: "Left Pane",
-      subtitle: "Code Editor",
-      description: "Write and edit your files with a full-featured code editor. All AI-generated code appears here, ready for manual refinement.",
-      points: ["Syntax highlighting", "Auto-completion", "Direct file access"],
+      title: "Left Pane: Editor",
+      description: "Full-featured code editor where AI-generated frontend UI and backend API routes appear ready for refinement.",
     },
     {
       icon: ChatBubbleLeftRight,
-      title: "Center Pane",
-      subtitle: "AI Assistant",
-      description: "Ask questions, generate code, and get live help. Command center for driving development with AI assistance.",
-      points: ["Multi-model selection", "Quick Actions", "Collapsible & Swappable"],
+      title: "Center Pane: AI",
+      description: "Command center. Ask questions, build databases, generate server code, and drive development.",
     },
     {
       icon: Eye,
-      title: "Right Pane",
-      subtitle: "Live Preview",
-      description: "See updates instantly in real-time. Changes render automatically without manual compilation.",
-      points: ["Real-time updates", "Interactive preview", "Visual editing mode"],
+      title: "Right Pane: Preview",
+      description: "Real-time updates. See your UI changes and test your API endpoints instantly without manual compilation.",
     },
   ];
 
@@ -45,22 +44,22 @@
     {
       name: "Gemini",
       icon: CpuChip,
-      bestFor: "General Development",
-      strengths: "Balanced performance & accuracy",
+      bestFor: "Recommended",
+      strengths: "Balanced performance for full-stack dev.",
       recommended: true,
     },
     {
       name: "Grok",
       icon: Bolt,
-      bestFor: "Creative Solutions",
-      strengths: "Innovative problem-solving",
+      bestFor: "Creative",
+      strengths: "Innovative problem-solving & brainstorming.",
       creative: true,
     },
     {
       name: "GPT",
       icon: CircleStack,
-      bestFor: "Complex Reasoning",
-      strengths: "Deep analysis & explanation",
+      bestFor: "Advanced",
+      strengths: "Deep reasoning for complex backend logic.",
       advanced: true,
     },
   ];
@@ -70,61 +69,87 @@
 <header class="w-full bg-gradient-to-br from-[hsl(var(--a))] to-[hsl(var(--s))] text-[hsl(var(--pc))]">
   <div class="container mx-auto flex flex-col items-center justify-center text-center px-6 py-20">
     <div class="mb-4 inline-block rounded-full bg-[hsl(var(--pc))/0.2] px-4 py-1 text-sm font-semibold">
-      ✨ Supercharged by AI
+      ✨ Build Full-Stack Apps with AI - No Code Required
     </div>
-    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center gap-4">
+    <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-4 flex-wrap">
       <RocketLaunch class="h-12 w-12 text-[hsl(var(--pc))]" />
-      Welcome to Your BYOB Workspace
+      Launch Your Next Amazing Idea
     </h1>
-    <p class="mt-4 max-w-2xl text-lg text-[hsl(var(--pc)/0.9)]">
-      Accelerate your development lifecycle with an integrated AI assistant, streamlined versioning, and powerful project controls.
+    <p class="mt-6 max-w-2xl text-xl text-[hsl(var(--pc)/0.9)]">
+      The all-in-one place for your full-stack applications. From database schemas to UI components, ship to production in record time with AI assistance.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <button class="btn btn-neutral btn-lg">Get Started</button>
-      <button class="btn btn-ghost btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">View Documentation</button>
+      <a href="https://byob.studio" target="_blank" class="btn btn-neutral btn-lg border-none">Start Building</a>
+      <a href="https://byob.studio" target="_blank" class="btn btn-ghost btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">View Showcase</a>
     </div>
   </div>
 </header>
 
-<!-- MAIN CONTENT -->
 <main class="bg-[hsl(var(--b1))] text-[hsl(var(--bc))]">
 
+
   <!-- WORKSPACE FEATURES -->
-  <section class="py-16 sm:py-24">
+  <section class="py-16 sm:py-24 bg-[hsl(var(--b2))]">
     <div class="container mx-auto px-6 space-y-12">
       <div class="text-center">
         <h2 class="text-3xl md:text-4xl font-bold flex items-center justify-center gap-3">
           <CodeBracket class="h-8 w-8 text-[hsl(var(--p))]" />
-          Workspace Layout & Features
+          Workspace Layout
         </h2>
         <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-          Your workspace is expertly crafted for productivity—explore its three dynamic panes:
+          Expertly crafted panes for maximum productivity. Everything you need for frontend and backend dev in one fluid interface.
         </p>
       </div>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         {#each workspaceFeatures as feature}
           <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-            <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4 mb-4">
+               <div class="p-3 bg-[hsl(var(--p))/0.1] rounded-xl text-[hsl(var(--p))]">
+                  <svelte:component this={feature.icon} class="w-6 h-6" />
+               </div>
               <h3 class="text-xl font-bold">{feature.title}</h3>
-              <span class="badge badge-info badge-outline">{feature.subtitle}</span>
             </div>
-            <p class="mt-4 text-[hsl(var(--bc)/0.7)]">{feature.description}</p>
-            <ul class="mt-6 space-y-3 text-[hsl(var(--bc)/0.9)]">
-              {#each feature.points as point}
-                <li class="flex items-center gap-2">
-                  <CheckCircle class="h-5 w-5 text-[hsl(var(--p))]" />
-                  <span>{point}</span>
-                </li>
-              {/each}
-            </ul>
+            <p class="text-[hsl(var(--bc)/0.8)] leading-relaxed">{feature.description}</p>
           </div>
         {/each}
       </div>
-      <div class="text-center text-[hsl(var(--bc)/0.8)] flex items-center justify-center gap-2 bg-[hsl(var(--b2))] rounded-lg p-4">
+      <div class="text-center text-[hsl(var(--bc)/0.8)] flex items-center justify-center gap-2 bg-[hsl(var(--b1))] rounded-lg p-4 border border-[hsl(var(--b3))] max-w-2xl mx-auto shadow-sm">
           <LightBulb class="w-5 h-5 text-[hsl(var(--in))]" />
           <span class="font-semibold">Tip:</span> Swap panes, drag to resize, or minimize to focus—your workflow, your way!
       </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="py-16 sm:py-24">
+    <div class="container mx-auto px-6">
+        <div class="text-center">
+            <h2 class="text-3xl md:text-4xl font-bold">Everything you need to ship</h2>
+            <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
+                We've packed every tool a modern full-stack developer needs into one workspace.
+            </p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {#each [
+              {icon: ServerStack, title: 'Serverless Backend', desc: 'AI writes server endpoints. Securely process forms, auth, and databases on the edge.'},
+              {icon: CursorArrowRays, title: 'Visual Editing', desc: 'Click any element in Live Preview to modify text or style instantly.'},
+              {icon: RocketLaunch, title: 'One-Click Deploy', desc: 'Ship frontend and backend to Cloudflare in seconds. Zero devops.'},
+              {icon: Photo, title: 'Image Understanding', desc: 'Upload wireframes or screenshots; BYOB converts them into pixel-perfect code.'},
+              {icon: Microphone, title: 'Voice Coding', desc: 'Dictate complex logic or backend requirements. "Create a POST route for user login."'},
+              {icon: ArrowUturnLeft, title: 'Time Travel', desc: 'Instant rollback capability. Save full-stack versions with descriptive messages.'},
+              {icon: PlayCircle, title: 'Project Controls', desc: 'Restart, stop, or delete your project with essential cloud controls.'},
+              {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all frontend and server changes with snapshots.'},
+            ] as feature}
+              <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6 hover:shadow-md transition-shadow">
+                <div class="h-10 w-10 flex items-center justify-center rounded-lg bg-[hsl(var(--p))/0.1] text-[hsl(var(--p))] mb-4">
+                  <svelte:component this={feature.icon} class="w-6 h-6" />
+                </div>
+                <h3 class="font-bold text-lg">{feature.title}</h3>
+                <p class="text-[hsl(var(--bc)/0.7)] mt-2 text-sm leading-relaxed">{feature.desc}</p>
+              </div>
+            {/each}
+        </div>
     </div>
   </section>
 
@@ -132,9 +157,9 @@
   <section class="py-16 sm:py-24 bg-[hsl(var(--b2))]">
     <div class="container mx-auto px-6">
        <div class="text-center">
-        <h2 class="text-3xl md:text-4xl font-bold">Multi-Model AI Selection</h2>
+        <h2 class="text-3xl md:text-4xl font-bold">Multi-Model Intelligence</h2>
         <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-          Choose the optimal AI architecture for your specific task.
+          Choose the optimal brain for your specific task.
         </p>
       </div>
 
@@ -143,19 +168,17 @@
            <div class="relative rounded-2xl p-8 transition-all duration-300"
                 class:border-2={model.recommended}
                 class:border-[hsl(var(--in))]={model.recommended}
-                class:shadow-2xl={model.recommended}
+                class:shadow-xl={model.recommended}
                 class:bg-[hsl(var(--b1))]={model.recommended}
                 class:border={!model.recommended}
                 class:border-[hsl(var(--b3))]={!model.recommended}
            >
              {#if model.recommended}
-                <span class="badge badge-info absolute -top-3 right-6">Recommended</span>
-             {/if}
-             {#if model.creative}
-                <span class="badge badge-accent absolute -top-3 right-6">Creative</span>
-             {/if}
-             {#if model.advanced}
-                <span class="badge badge-secondary absolute -top-3 right-6">Advanced</span>
+                <span class="badge badge-info absolute -top-3 right-6">{model.bestFor}</span>
+             {:else if model.creative}
+                <span class="badge badge-accent absolute -top-3 right-6">{model.bestFor}</span>
+             {:else}
+                <span class="badge badge-secondary absolute -top-3 right-6">{model.bestFor}</span>
              {/if}
              
              <div class="flex items-center gap-4">
@@ -165,8 +188,7 @@
                 <h3 class="text-2xl font-bold">{model.name}</h3>
              </div>
              <div class="mt-6 space-y-3">
-                <p><span class="font-semibold text-[hsl(var(--bc)/0.6)]">Best For:</span> {model.bestFor}</p>
-                <p><span class="font-semibold text-[hsl(var(--bc)/0.6)]">Strengths:</span> {model.strengths}</p>
+                <p class="text-[hsl(var(--bc)/0.8)]">{model.strengths}</p>
              </div>
            </div>
         {/each}
@@ -286,6 +308,12 @@
     </div>
   </section>
 
+  <section class="py-12 px-6">
+      <div class="container mx-auto">
+          <ApiWelcome />
+      </div>
+  </section>
+
   <!-- CTA -->
   <section class="py-16 sm:py-24">
       <div class="container mx-auto px-6">
@@ -306,18 +334,18 @@
     <div class="flex flex-col items-center gap-2">
       <div class="divider w-48 mx-auto border-white/20"></div>
       <p class="font-semibold text-lg flex items-center gap-2 justify-center">
-        <RocketLaunch class="w-5 h-5 text-amber-300" />
-        © 2026 <span class="text-amber-300 font-bold">Build Your Own Buzz</span>. All rights reserved.
+        <RocketLaunch class="w-5 h-5 text-[#667eea]" />
+        © 2026 <span class="bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent font-bold">Build Your Own Buzz</span>. All rights reserved.
       </p>
       <div class="flex gap-6 justify-center mt-4">
-        <a href="#" class="link link-hover text-white/80 transition hover:scale-110 flex items-center gap-1 hover:text-amber-300">
+        <a href="https://byob.studio/contact" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
           <ChatBubbleLeftRight class="w-4 h-4" /> Contact
         </a>
-        <a href="#" class="link link-hover text-white/80 transition hover:scale-110 flex items-center gap-1 hover:text-amber-300">
-          <DeviceTablet class="w-4 h-4" /> Docs
+        <a href="https://byob.studio/faq" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
+          <DeviceTablet class="w-4 h-4" /> FAQ
         </a>
-        <a href="#" class="link link-hover text-white/80 transition hover:scale-110 flex items-center gap-1 hover:text-amber-300">
-          <Window class="w-4 h-4" /> GitHub
+        <a href="https://byob.studio" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
+          <Window class="w-4 h-4" /> BYOB Studio
         </a>
       </div>
     </div>

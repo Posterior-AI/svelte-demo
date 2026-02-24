@@ -1,12 +1,13 @@
-# 🚀 BYOB AI-Powered Workspace
+# 🚀 BYOB AI-Powered Full-Stack Workspace
 
 <div align="center">
 
 ![Svelte](https://img.shields.io/badge/Svelte-FF3E00?style=for-the-badge&logo=svelte&logoColor=white)
+![Cloudflare](https://img.shields.io/badge/Cloudflare_Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![AI Powered](https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge&logo=openai&logoColor=white)
 
-**Accelerate your development lifecycle with integrated AI assistance**
+**Accelerate your full-stack development lifecycle with integrated AI assistance**
 
 [Features](#-features) • [Getting Started](#-getting-started) • [Workflow](#-recommended-workflow) • [Documentation](#-core-concepts)
 
@@ -16,17 +17,21 @@
 
 ## 📖 Overview
 
-Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, and powerful project controls directly into your development workflow.
+Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build full-stack web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, and powerful project controls directly into your development workflow. 
+
+Generate rich frontend UIs and secure serverless backend API routes, all deployed to the Cloudflare Edge.
 
 ## ✨ Features
 
 - 🤖 **Multi-Model AI Assistant** - Choose from Gemini, Grok, and GPT
+- ☁️ **Serverless Backend APIs** - AI writes SvelteKit `+server.ts` routes and handles edge deployments automatically.
 - 👁️ **Image Understanding** - Upload wireframes or screenshots; the AI converts them into pixel-perfect Svelte code.
-- 🎙️ **Voice Coding** - Dictate complex logic or CSS changes directly to the assistant.
+- 🎙️ **Voice Coding** - Dictate complex frontend logic or backend server queries directly to the assistant.
 - 🎨 **Visual Editing Mode** - Direct UI manipulation without code
 - 🚀 **One-Click Deploy** - Ship to production in seconds with zero configuration.
 - 📝 **Built-in Version Control** - "Time Travel" with instant snapshots and rollback.
 - 📱 **PWA Support** - Install BYOB on your phone to build and edit on the go.
+
 ---
 
 ## 🧠 Core Concepts: The AI Assistant
@@ -39,9 +44,9 @@ Choose the optimal AI architecture for your specific task:
 
 | Model | Best For | Strengths |
 |-------|----------|-----------|
-| **Gemini** | General development | Balanced performance & accuracy |
+| **Gemini** | General development | Balanced performance & accuracy for full-stack tasks |
 | **Grok** | Creative solutions | Innovative problem-solving |
-| **GPT** | Complex reasoning | Deep analysis & explanation |
+| **GPT** | Complex reasoning | Deep analysis & backend database logic |
 
 ### 🔄 Operating Modes
 
@@ -59,9 +64,9 @@ The assistant adapts to your workflow with two distinct modes:
 <td>💬</td>
 <td>Strategic Planning & Analysis</td>
 <td>
-• Architectural planning and validation<br>
+• Architectural planning (Frontend & Backend)<br>
 • In-depth code/concept explanation<br>
-• Brainstorming features and flows
+• Brainstorming features and database schemas
 </td>
 </tr>
 <tr>
@@ -69,7 +74,7 @@ The assistant adapts to your workflow with two distinct modes:
 <td>🛠️</td>
 <td>Code Generation & Execution</td>
 <td>
-• Creating new files and components<br>
+• Creating UI components and server API endpoints<br>
 • Modifying existing codebases<br>
 • Installing project dependencies
 </td>
@@ -80,10 +85,10 @@ The assistant adapts to your workflow with two distinct modes:
 
 Located below the main input area, **Quick Actions** provide one-click shortcuts for common development tasks:
 
-- 🎨 Create new components
+- 🎨 Create new UI components
+- 🔌 Generate backend API routes
 - 🚀 Start/restart dev server
 - 📦 Install packages
-- 🔧 And more...
 
 ---
 
@@ -95,9 +100,9 @@ The UI is segmented into three productivity-maximizing panes:
 
 | Pane | Location | Description |
 |------|----------|-------------|
-| **Code Editor** | Left | Full-featured editor with direct code access. All AI-generated code appears here, ready for manual refinement. |
+| **Code Editor** | Left | Full-featured editor with direct code access. All AI-generated frontend UI and backend API routes appear here. |
 | **AI Assistant** | Center | Command center for the AI. Select your model, operating mode, and use Quick Actions to drive development. |
-| **Live Preview** | Right | Real-time, interactive preview of your application. Changes render instantly without manual compilation. |
+| **Live Preview** | Right | Real-time, interactive preview of your application. UI changes render instantly, and backend API routes are testable immediately. |
 
 > **💡 Tip:** Panes are resizable – drag the borders to customize your layout!
 
@@ -108,8 +113,6 @@ Bridge the gap between design and development with **Visual Editing Mode**:
 1. Click on any element in the Live Preview (text, buttons, images)
 2. Modify them on the spot
 3. Changes are **automatically written back** to your source code
-
-Perfect for quick UI tweaks and content updates without touching the code editor!
 
 ### 🎮 Project Controls
 
@@ -124,7 +127,7 @@ Essential controls in the top-right corner:
 Built-in version control located in the top-left corner:
 
 1. Click **Save**
-2. Enter a descriptive message (e.g., "Implement user login form")
+2. Enter a descriptive message (e.g., "Implement user login form and auth API")
 3. A version snapshot is created and logged in the **Changes History**
 
 **Instant rollback capability** – select any previous version to restore your project to that state.
@@ -138,20 +141,20 @@ Maximize efficiency with this proven development cycle:
 ### 1️⃣ **Strategize** (Chat Mode)
 Begin by engaging the AI Assistant in **Chat Mode** to:
 - Outline your objectives
-- Define your architecture
-- Discuss implementation approaches
+- Define your frontend & backend architecture
+- Discuss database schema approaches
 
 ### 2️⃣ **Execute** (Tool Mode & Quick Actions)
 Switch to **Tool Mode** or use **Quick Actions** to:
-- Generate files and components
-- Implement core logic
+- Generate Svelte components and SvelteKit `+server.ts` routes
+- Implement core data fetching logic
 - Install dependencies
 
 ### 3️⃣ **Review & Refine**
 Monitor output in the **Code Editor** and **Live Preview**:
 - Make direct manual adjustments
+- Test frontend interactions and backend API responses
 - Perfect the final product
-- Test functionality in real-time
 
 ### 4️⃣ **Save Progress**
 Once you reach a stable milestone:
