@@ -39,7 +39,7 @@
         "vite-plugin-devtools-json": "^1.0.0",
         "vite-route-scanner": "^0.1.0",
         "vite-sitemap-gen": "^0.0.2",
-        "vite-zipper": "^0.2.0",
+        "vite-zipper": "^0.3.0",
       },
     },
   },
@@ -868,7 +868,7 @@
 
     "vite-sitemap-gen": ["vite-sitemap-gen@0.0.2", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-l1qY2HnL9e8MD18hzr0sseRgPMpT2e+nn848zCt756Oz5A7M/XgCrpM6jTGYMLXghBu7DNWgI9sZPXlftPqidg=="],
 
-    "vite-zipper": ["vite-zipper@0.2.0", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-mdt9lQFmODhDEVaGTKqVpASfqO5rVPS3ajJnIo3H60nzP6zWxIo3GLdHjR+J9r4tOC9jaFA9lNG8h/4zOL3ZNQ=="],
+    "vite-zipper": ["vite-zipper@0.3.0", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-NHgWLCXp73c+kzXPhMN+9tK0uU8bqP3U32NA2KKkc1Wbg9kT0Gc1D3heMUz7tltWzIJUiPpm0IPG1Y2u8v+Khg=="],
 
     "vitefu": ["vitefu@1.1.1", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0-beta.0" }, "optionalPeers": ["vite"] }, "sha512-B/Fegf3i8zh0yFbpzZ21amWzHmuNlLlmJT6n7bu5e+pCHUKQIfXSYokrqOBGEMMe9UG2sostKQF9mml/vYaWJQ=="],
 
