@@ -137,9 +137,10 @@
               {icon: RocketLaunch, title: 'One-Click Deploy', desc: 'Ship frontend and backend to Cloudflare in seconds. Zero devops.'},
               {icon: Photo, title: 'Image Understanding', desc: 'Upload wireframes or screenshots; BYOB converts them into pixel-perfect code.'},
               {icon: Microphone, title: 'Voice Coding', desc: 'Dictate complex logic or backend requirements. "Create a POST route for user login."'},
-              {icon: ArrowUturnLeft, title: 'Time Travel', desc: 'Instant rollback capability. Save full-stack versions with descriptive messages.'},
-              {icon: PlayCircle, title: 'Project Controls', desc: 'Restart, stop, or delete your project with essential cloud controls.'},
-              {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all frontend and server changes with snapshots.'},
+            {icon: ArrowUturnLeft, title: 'Time Travel', desc: 'Instant rollback capability. Save full-stack versions with descriptive messages.'},
+            {icon: PlayCircle, title: 'Project Controls', desc: 'Restart, stop, or delete your project with essential cloud controls.'},
+            {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all frontend and server changes with snapshots.'},
+            {icon: Sparkles, title: 'AI/SEO Discovery', desc: 'Auto-generate sitemap.xml, robots.txt, and /index.md for LLM-friendly page access.'},
             ] as feature}
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6 hover:shadow-md transition-shadow">
                 <div class="h-10 w-10 flex items-center justify-center rounded-lg bg-[hsl(var(--p))/0.1] text-[hsl(var(--p))] mb-4">

@@ -31,6 +31,7 @@ Generate rich frontend UIs and secure serverless backend API routes, all deploye
 - 🚀 **One-Click Deploy** - Ship to production in seconds with zero configuration.
 - 📝 **Built-in Version Control** - "Time Travel" with instant snapshots and rollback.
 - 📱 **PWA Support** - Install BYOB on your phone to build and edit on the go.
+- 🤖 **AI/SEO Discovery** - Auto-generate `sitemap.xml`, `robots.txt`, and `/index.md` pages for LLM-friendly access.
 
 ---
 

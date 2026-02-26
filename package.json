@@ -3,6 +3,10 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"dependencies": {
+		"@types/turndown": "^5.0.6",
+		"turndown": "^7.2.0"
+	},
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
