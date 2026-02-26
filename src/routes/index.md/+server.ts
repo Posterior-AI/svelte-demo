@@ -1,4 +1,3 @@
 import type { RequestHandler } from './$types';
-import { handleIndexMarkdown } from '$lib/markdown-index';
-
-export const GET: RequestHandler = (event) => handleIndexMarkdown(event);
+export const GET: RequestHandler = () =>
+	new Response('Not found', { status: 404 });
