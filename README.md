@@ -17,7 +17,7 @@
 
 ## 📖 Overview
 
-Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build full-stack web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, and powerful project controls directly into your development workflow. 
+Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build full-stack web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, powerful project controls, and Supabase integration directly into your development workflow. 
 
 Generate rich frontend UIs and secure serverless backend API routes, all deployed to the Cloudflare Edge.
 
@@ -25,6 +25,7 @@ Generate rich frontend UIs and secure serverless backend API routes, all deploye
 
 - 🤖 **Multi-Model AI Assistant** - Choose from Gemini, Grok, and GPT
 - ☁️ **Serverless Backend APIs** - AI writes SvelteKit `+server.ts` routes and handles edge deployments automatically.
+- 🧩 **Supabase Integration** - Define tables, policies, and realtime APIs with AI prompts while keeping your Supabase project synchronized.
 - 👁️ **Image Understanding** - Upload wireframes or screenshots; the AI converts them into pixel-perfect Svelte code.
 - 🎙️ **Voice Coding** - Dictate complex frontend logic or backend server queries directly to the assistant.
 - 🎨 **Visual Editing Mode** - Direct UI manipulation without code
@@ -32,6 +33,22 @@ Generate rich frontend UIs and secure serverless backend API routes, all deploye
 - 📝 **Built-in Version Control** - "Time Travel" with instant snapshots and rollback.
 - 📱 **PWA Support** - Install BYOB on your phone to build and edit on the go.
 - 🤖 **AI/SEO Discovery** - Auto-generate `sitemap.xml`, `robots.txt`, and `/index.md` pages for LLM-friendly access.
+
+## 🔌 Supabase Integration
+
+Connect your Supabase project directly to the BYOB workspace. Prompt the AI to create tables, set up policies, and publish realtime APIs without manual SQL or policy authoring.
+
+### Define Tables
+
+- BYOB can generate Supabase tables, columns, and relationships.
+
+### Handle Auth
+
+- Generate secure sign-ups, row-level security, and token flows with AI-written policies.
+
+### Test & Deploy
+
+- Preview Supabase endpoints while editing UI components, then ship the combined stack with one click.
 
 ---
 

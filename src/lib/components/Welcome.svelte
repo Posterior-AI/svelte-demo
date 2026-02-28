@@ -76,7 +76,7 @@
       Launch Your Next Amazing Idea
     </h1>
     <p class="mt-6 max-w-2xl text-xl text-[hsl(var(--pc)/0.9)]">
-      The all-in-one place for your full-stack applications. From database schemas to UI components, ship to production in record time with AI assistance.
+      The all-in-one place for your full-stack applications. From Database schemas to UI components, ship to production in record time with AI assistance.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a href="https://byob.studio" target="_blank" class="btn btn-neutral btn-lg border-none">Start Building</a>
@@ -133,6 +133,7 @@
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {#each [
               {icon: ServerStack, title: 'Serverless Backend', desc: 'AI writes server endpoints. Securely process forms, auth, and databases on the edge.'},
+              {icon: ServerStack, title: 'Supabase Integration', desc: 'Map tables, policies, and realtime data through AI prompts while keeping your Supabase project synced.'},
               {icon: CursorArrowRays, title: 'Visual Editing', desc: 'Click any element in Live Preview to modify text or style instantly.'},
               {icon: RocketLaunch, title: 'One-Click Deploy', desc: 'Ship frontend and backend to Cloudflare in seconds. Zero devops.'},
               {icon: Photo, title: 'Image Understanding', desc: 'Upload wireframes or screenshots; BYOB converts them into pixel-perfect code.'},
@@ -307,6 +308,46 @@
             {/each}
         </div>
     </div>
+  </section>
+
+  <section class="py-16 sm:py-24">
+      <div class="container mx-auto px-6">
+          <div class="rounded-3xl border border-[hsl(var(--b3))] bg-gradient-to-br from-[hsl(var(--p)/0.12)] via-[hsl(var(--b1))] to-[hsl(var(--b2))] p-10 shadow-2xl">
+              <div class="flex flex-wrap items-center gap-6">
+                  <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(var(--p)/0.2)] text-[hsl(var(--p))]">
+                      <ServerStack class="w-7 h-7" />
+                  </div>
+                  <div>
+                      <h2 class="text-3xl font-bold">Supabase Integration</h2>
+                      <span class="badge badge-primary text-xs uppercase tracking-wide">Supabase Ready</span>
+                      <p class="text-[hsl(var(--bc)/0.7)]">
+                          Bring your Supabase project into the workspace. Define tables, policies, and realtime
+                          APIs using concise prompts and keep the schema synced with generated code.
+                      </p>
+                  </div>
+              </div>
+              <div class="mt-8 grid gap-6 md:grid-cols-3">
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">Define Tables</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          Prompt the AI. BYOB scaffolds Supabase tables, columns, and policies instantly.
+                      </p>
+                  </div>
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">Handle Auth</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          Generate secure sign-ups, row-level security, and token flows without writing boilerplate.
+                      </p>
+                  </div>
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">Test & Deploy</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          Preview Supabase endpoints while editing UI components, then ship everything with one click.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
   </section>
 
   <section class="py-12 px-6">
