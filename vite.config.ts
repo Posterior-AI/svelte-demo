@@ -8,6 +8,7 @@ import { defineConfig, type PluginOption } from 'vite';
 import { routeScanner } from 'vite-route-scanner'; 
 import { sitemapPlugin } from 'vite-sitemap-gen'; 
 import { sitemapConfig } from './src/lib/sitemap-config';
+import viteLogCapture from 'vite-log-capture'
 
 import Icons from 'unplugin-icons/vite';
 
@@ -48,6 +49,12 @@ __registerPluginCleanup(uploadPlugin);
 const routesPlugin = routeScanner({ routesDir: 'src/routes' }) as PluginOption;
 __registerPluginCleanup(routesPlugin);
 
+const viteLogCapturePlugin = viteLogCapture({
+      logRootDir: './browser-logs',  
+      flushInterval: 300,          
+      maxBufferSize: 1000,        
+    }) as PluginOption;
+__registerPluginCleanup(viteLogCapturePlugin);
 
 const cleanupManager = {
   name: 'vite-cleanup-manager',
@@ -72,6 +79,9 @@ export default defineConfig({
   server: {
     host:"0.0.0.0",
     port:"5173",
+    watch: {
+      ignored: ['**/.browser-console-logs'],
+    },
     allowedHosts: ['http://localhost:5173'],
     hmr: {
       overlay: false,
@@ -84,6 +94,7 @@ export default defineConfig({
     uploadPlugin,
     routesPlugin,
     sitemapGenPlugin,
+    viteLogCapturePlugin,
     tailwindcss(),
     sveltekit(),
     devtoolsJson(),

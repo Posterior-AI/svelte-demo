@@ -27,3 +27,4 @@ mcp_go_bin
 
 .dev.vars*
 !.dev.vars.example
+.browser-console-logs
