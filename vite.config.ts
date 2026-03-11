@@ -49,11 +49,7 @@ __registerPluginCleanup(uploadPlugin);
 const routesPlugin = routeScanner({ routesDir: 'src/routes' }) as PluginOption;
 __registerPluginCleanup(routesPlugin);
 
-const viteLogCapturePlugin = viteLogCapture({
-      logRootDir: './browser-logs',  
-      flushInterval: 300,          
-      maxBufferSize: 1000,        
-    }) as PluginOption;
+const viteLogCapturePlugin = viteLogCapture({}) as PluginOption;
 __registerPluginCleanup(viteLogCapturePlugin);
 
 const cleanupManager = {
