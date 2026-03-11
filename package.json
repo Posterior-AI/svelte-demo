@@ -53,7 +53,7 @@
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vite-route-scanner": "^0.1.0",
 		"vite-sitemap-gen": "^0.0.2",
-		"vite-zipper": "^0.3.12",
+		"vite-zipper": "^0.3.13",
 		"vite-log-capture": "0.1.3"
 	}
 }
