@@ -9,7 +9,7 @@
 	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && node scripts/generate-index-md-assets.mjs",
+		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -53,7 +53,7 @@
 		"vite-plugin-devtools-json": "^1.0.0",
 		"vite-route-scanner": "^0.1.0",
 		"vite-sitemap-gen": "^0.0.2",
-		"vite-zipper": "^0.3.8",
+		"vite-zipper": "^0.3.9",
 		"vite-log-capture": "0.1.1"
 	}
 }
