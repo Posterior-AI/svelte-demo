@@ -7,9 +7,9 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![AI Powered](https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge&logo=openai&logoColor=white)
 
-**Accelerate your full-stack development lifecycle with integrated AI assistance**
+**Ship a full web app from one prompt, then keep editing in a three-pane workspace.**
 
-[Features](#-features) • [Getting Started](#-getting-started) • [Workflow](#-recommended-workflow) • [Documentation](#-core-concepts)
+[Workspace Layout](#-workspace-layout) • [Workflow](#-professional-workflow) • [Supabase](#-supabase-integration)
 
 </div>
 
@@ -17,173 +17,96 @@
 
 ## 📖 Overview
 
-Welcome to **BYOB (Build Your Own Buzz)** – the AI-powered workspace designed to revolutionize how you build full-stack web applications. This workspace seamlessly combines a state-of-the-art AI assistant, streamlined versioning system, powerful project controls, and Supabase integration directly into your development workflow. 
+BYOB (Build Your Own Buzz) is an AI-powered workspace that orchestrates everything you need to go from design idea to deployed SvelteKit experience. Describe your vision once, then let the assistant plan the UX, generate frontend components and backend `+server.ts` routes, and keep the code editable inside a unified workspace with three resizable panes.
 
-Generate rich frontend UIs and secure serverless backend API routes, all deployed to the Cloudflare Edge.
+## 🗂️ Workspace Layout
 
-## ✨ Features
+| Pane | Role | What Happens Here |
+| --- | --- | --- |
+| **Left – Editor** | Code layer | Full-featured editor surfaces every AI-generated component, backend API route, and manual tweak you make. |
+| **Center – AI Assistant** | Command center | Switch models and modes, ask strategic questions, scaffold Supabase tables, and generate secure endpoints. |
+| **Right – Live Preview** | Real-time feedback | Watch UI adjustments and backend responses update instantly via hot module replacement—no extra compilation steps.
 
-- 🤖 **Multi-Model AI Assistant** - Choose from Gemini, Grok, and GPT
-- ☁️ **Serverless Backend APIs** - AI writes SvelteKit `+server.ts` routes and handles edge deployments automatically.
-- 🧩 **Supabase Integration** - Define tables, policies, and realtime APIs with AI prompts while keeping your Supabase project synchronized.
-- 👁️ **Image Understanding** - Upload wireframes or screenshots; the AI converts them into pixel-perfect Svelte code.
-- 🎙️ **Voice Coding** - Dictate complex frontend logic or backend server queries directly to the assistant.
-- 🎨 **Visual Editing Mode** - Direct UI manipulation without code
-- 🚀 **One-Click Deploy** - Ship to production in seconds with zero configuration.
-- 📝 **Built-in Version Control** - "Time Travel" with instant snapshots and rollback.
-- 📱 **PWA Support** - Install BYOB on your phone to build and edit on the go.
-- 🤖 **AI/SEO Discovery** - Auto-generate `sitemap.xml`, `robots.txt`, and `/index.md` pages for LLM-friendly access.
+> **Tip:** Swap panes, resize, or minimize any section so your workspace matches how you like to focus.
+
+## ✨ Everything you need to ship
+
+- **Serverless Backend:** AI authors secure edge routes for auth, APIs, and data flows.
+- **Supabase Integration:** Sync tables, policies, and realtime APIs while the assistant edits the code.
+- **BYOB DB:** Fully managed SQLite storage with schema exploration, SQL scratchpad, and distributed scaling.
+- **Visual Editing Mode:** Click inside the preview and have any element update the exact file for you.
+- **Live Web Search:** Agents pull current docs and references as you craft features.
+- **Model Swapping:** Flip between Gemini 3.1, Grok, GPT-5.4, and Claude 3.7 to match the task.
+- **One-Click Deploy:** Publish frontend+backend to Cloudflare’s edge with zero DevOps work.
+- **Image Understanding:** Upload wireframes or screenshots and receive pixel-precise Svelte code.
+- **Voice Coding:** Dictate database requirements or UI logic and let the assistant implement it.
+- **Time Travel:** Save snapshots with notes and roll back if the AI drifts.
+- **Project Controls:** Restart, stop, or delete a project instance straight from the dashboard.
+- **Live Preview & Testing:** Hot Module Replacement keeps both UI and backend responses in sync.
+- **Change History:** Track every change with descriptive snapshots.
+
+## 🧠 Multi-Model Intelligence
+
+Choose the optimal brain for the task.
+
+| Model | Strengths | Tagline |
+| --- | --- | --- |
+| **Gemini 3.1** | Large context, fast coding for sprawling UI systems | Google's finest |
+| **Grok** | Creative problem solving and experimental flows | xAI's rebel |
+| **GPT-5.4** | Deep reasoning for complex backend logic | OpenAI's best |
+| **Claude 3.7** | Thoughtful architecture guidance and beautiful UI | Anthropic's ally |
+
+## 🛠️ Dual Operating Modes
+
+- **Chat Mode (💬)** – Strategic planning and analysis. Use it for architectural reviews, deep explanations, schema brainstorming, and defining frontend/back-end approaches.
+- **Tool Mode (🛠️)** – Code generation and execution. Generate components, edit files, create APIs, and install dependencies with automated tooling commands.
+
+## 🔄 Professional Workflow
+
+1. **Strategize** – Outline objectives and architecture in Chat Mode.
+2. **Execute** – Switch to Tool Mode and Quick Actions to generate files, routes, and dependencies.
+3. **Review & Refine** – Monitor what the assistant produces, adjust in the editor, and test interactions in the Live Preview.
+4. **Save Progress** – Snapshot stable milestones with descriptive notes for instant rollback.
+
+## 💪 Powerful Features
+
+- **Visual Editing Mode:** Modify preview elements directly and ship the updated source.
+- **Version Control:** Built-in snapshots and reset capability keep history evergreen.
+- **Project Controls:** Restart, stop, or delete your AI workspace with essential dashboard actions.
+- **Live Preview:** Interactive, instant updates without manual refresh.
+- **Customizable Layout:** Swap panes, drag to resize, or minimize sections to match your workflow.
+- **Change History:** A comprehensive log of every modification keeps you aware of what changed and when.
 
 ## 🔌 Supabase Integration
 
-Connect your Supabase project directly to the BYOB workspace. Prompt the AI to create tables, set up policies, and publish realtime APIs without manual SQL or policy authoring.
+Bring your Supabase project into BYOB and control it via concise prompts.
 
-### Define Tables
+- **Define Tables:** BYOB scaffolds tables, columns, and policies immediately after you describe the schema.
+- **Handle Auth:** Secure signups, row-level security, and token flows are generated without boilerplate.
+- **Test & Deploy:** Preview Supabase endpoints next to the UI and ship the combined stack with one click.
 
-- BYOB can generate Supabase tables, columns, and relationships.
+## 🗄️ BYOB DB
 
-### Handle Auth
+BYOB DB is a fully managed, scalable SQLite data service that removes provisioning headaches.
 
-- Generate secure sign-ups, row-level security, and token flows with AI-written policies.
+- **Schema Explorer:** Inspect tables, columns, and ER diagrams inside the browser.
+- **SQL Scratchpad:** Run read-only queries for debugging or analytics without leaving the workspace.
+- **Managed & Super Scalable:** The platform keeps SQLite fast across distributed edge nodes with zero ops.
 
-### Test & Deploy
+## 🚀 Ready to Supercharge Your Development?
 
-- Preview Supabase endpoints while editing UI components, then ship the combined stack with one click.
+Experience AI-guided coding, dual modes, real-time previews, and seamless version control—all within one workspace. 
 
----
+<div align="center">
 
-## 🧠 Core Concepts: The AI Assistant
+**[Start Building Now at BYOB.studio](https://byob.studio)**
 
-The AI Assistant is the centerpiece of the workspace, powered by a sophisticated model-selection system with two functional modes and pre-defined command shortcuts.
-
-### 🎯 AI Model Selection
-
-Choose the optimal AI architecture for your specific task:
-
-| Model | Best For | Strengths |
-|-------|----------|-----------|
-| **Gemini** | General development | Balanced performance & accuracy for full-stack tasks |
-| **Grok** | Creative solutions | Innovative problem-solving |
-| **GPT** | Complex reasoning | Deep analysis & backend database logic |
-
-### 🔄 Operating Modes
-
-The assistant adapts to your workflow with two distinct modes:
-
-<table>
-<tr>
-<th>Mode</th>
-<th>Icon</th>
-<th>Primary Function</th>
-<th>Key Use Cases</th>
-</tr>
-<tr>
-<td><strong>Chat Mode</strong></td>
-<td>💬</td>
-<td>Strategic Planning & Analysis</td>
-<td>
-• Architectural planning (Frontend & Backend)<br>
-• In-depth code/concept explanation<br>
-• Brainstorming features and database schemas
-</td>
-</tr>
-<tr>
-<td><strong>Tool Mode</strong></td>
-<td>🛠️</td>
-<td>Code Generation & Execution</td>
-<td>
-• Creating UI components and server API endpoints<br>
-• Modifying existing codebases<br>
-• Installing project dependencies
-</td>
-</tr>
-</table>
-
-### ⚡ Quick Actions
-
-Located below the main input area, **Quick Actions** provide one-click shortcuts for common development tasks:
-
-- 🎨 Create new UI components
-- 🔌 Generate backend API routes
-- 🚀 Start/restart dev server
-- 📦 Install packages
-
----
-
-## 🗂️ Workspace & Project Management
-
-### 📱 Workspace Overview
-
-The UI is segmented into three productivity-maximizing panes:
-
-| Pane | Location | Description |
-|------|----------|-------------|
-| **Code Editor** | Left | Full-featured editor with direct code access. All AI-generated frontend UI and backend API routes appear here. |
-| **AI Assistant** | Center | Command center for the AI. Select your model, operating mode, and use Quick Actions to drive development. |
-| **Live Preview** | Right | Real-time, interactive preview of your application. UI changes render instantly, and backend API routes are testable immediately. |
-
-> **💡 Tip:** Panes are resizable – drag the borders to customize your layout!
-
-### 🎨 Visual Editing Mode ✨
-
-Bridge the gap between design and development with **Visual Editing Mode**:
-
-1. Click on any element in the Live Preview (text, buttons, images)
-2. Modify them on the spot
-3. Changes are **automatically written back** to your source code
-
-### 🎮 Project Controls
-
-Essential controls in the top-right corner:
-
-- **Restart** 🔄 - Restarts the development server
-- **Stop** ⏹️ - Halts the development server
-- **Delete** 🗑️ - Deletes the current project instance
-
-### 📚 Change History & Version Control
-
-Built-in version control located in the top-left corner:
-
-1. Click **Save**
-2. Enter a descriptive message (e.g., "Implement user login form and auth API")
-3. A version snapshot is created and logged in the **Changes History**
-
-**Instant rollback capability** – select any previous version to restore your project to that state.
-
----
-
-## 🎯 Recommended Professional Workflow
-
-Maximize efficiency with this proven development cycle:
-
-### 1️⃣ **Strategize** (Chat Mode)
-Begin by engaging the AI Assistant in **Chat Mode** to:
-- Outline your objectives
-- Define your frontend & backend architecture
-- Discuss database schema approaches
-
-### 2️⃣ **Execute** (Tool Mode & Quick Actions)
-Switch to **Tool Mode** or use **Quick Actions** to:
-- Generate Svelte components and SvelteKit `+server.ts` routes
-- Implement core data fetching logic
-- Install dependencies
-
-### 3️⃣ **Review & Refine**
-Monitor output in the **Code Editor** and **Live Preview**:
-- Make direct manual adjustments
-- Test frontend interactions and backend API responses
-- Perfect the final product
-
-### 4️⃣ **Save Progress**
-Once you reach a stable milestone:
-- Use the **Save** button
-- Create a version snapshot
-- Ensure you always have a checkpoint to return to
+</div>
 
 ---
 
 <div align="center">
-  
-**[Start Building Now at BYOB.studio](https://byob.studio)**
+
+Have questions? Visit the [FAQ](https://byob.studio/faq) or [contact the team](https://byob.studio/contact).
 
 </div>

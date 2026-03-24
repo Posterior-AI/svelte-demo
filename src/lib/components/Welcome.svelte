@@ -20,6 +20,8 @@
   import Microphone from '~icons/heroicons/microphone';
   import Photo from '~icons/heroicons/photo';
   import ServerStack from '~icons/heroicons/server-stack';
+  import DocumentMagnifyingGlass from '~icons/heroicons/document-magnifying-glass';
+  import Database from '~icons/heroicons/circle-stack';
   import ApiWelcome from './ApiWelcome.svelte';
 
   const workspaceFeatures = [
@@ -36,31 +38,109 @@
     {
       icon: Eye,
       title: "Right Pane: Preview",
-      description: "Real-time updates. See your UI changes and test your API endpoints instantly without manual compilation.",
+        description: "Real-time updates. See your UI changes and test your API endpoints instantly without manual compilation.",
+      },
+    ];
+
+  const featureCards = [
+    {
+      icon: ServerStack,
+      title: 'Serverless Backend',
+      description: 'AI writes secure endpoints, auth, and data pipelines that run on the edge.',
+    },
+    {
+      icon: ServerStack,
+      title: 'Supabase Integration',
+      description:
+        'Connect your Supabase project and keep tables, policies, and realtime data synced as the AI edits.',
+      badge: 'Supabase Ready',
+    },
+    {
+      icon: Database,
+      title: 'BYOB DB',
+      description:
+        'Fully managed SQLite storage that scales across the cloud. Seamlessly explore data, schema, and ER diagrams while the system handles provisioning.',
+    },
+    {
+      icon: CursorArrowRays,
+      title: 'Visual Editing Mode',
+      description: 'Click inside the live preview, and the AI updates the exact files for you.',
+    },
+    {
+      icon: DocumentMagnifyingGlass,
+      title: 'Live Web Search',
+      description: 'Agents fetch current API docs, facts, and references in real time while coding.',
+    },
+    {
+      icon: RectangleGroup,
+      title: 'Model Swapping',
+      description: 'Flip between Gemini 3.1, Grok, GPT-5.4, and Claude 3.7 to match the task.',
+    },
+    {
+      icon: RocketLaunch,
+      title: 'One-Click Deploy',
+      description: 'Publish frontend and backend to Cloudflare’s edge in seconds with zero DevOps.',
+    },
+    {
+      icon: Photo,
+      title: 'Image Understanding',
+      description: 'Drop wireframes or screenshots; the AI generates pixel-perfect UI.',
+    },
+    {
+      icon: Microphone,
+      title: 'Voice Coding',
+      description: 'Dictate logic or database requirements and the assistant implements them.',
+    },
+    {
+      icon: ArrowUturnLeft,
+      title: 'Time Travel',
+      description: 'Save snapshots with notes and roll back when the AI drifts.',
+    },
+    {
+      icon: PlayCircle,
+      title: 'Project Controls',
+      description: 'Restart, stop, or delete your project and monitor builds from the dashboard.',
+    },
+    {
+      icon: Eye,
+      title: 'Live Preview & Testing',
+      description: 'Hot Module Replacement keeps the browser view and backend responses in perfect sync.',
+    },
+    {
+      icon: DocumentChartBar,
+      title: 'Change History',
+      description: 'Track every frontend and server-side change with descriptive snapshots.',
     },
   ];
 
   const aiModels = [
     {
-      name: "Gemini",
+      name: 'Gemini 3.1',
       icon: CpuChip,
-      bestFor: "Recommended",
-      strengths: "Balanced performance for full-stack dev.",
-      recommended: true,
+      badge: 'Advanced',
+      desc: 'Exceptional context window and coding speed for large UI systems.',
+      tagline: "Google's finest",
     },
     {
-      name: "Grok",
+      name: 'Grok',
       icon: Bolt,
-      bestFor: "Creative",
-      strengths: "Innovative problem-solving & brainstorming.",
-      creative: true,
+      badge: 'Creative',
+      desc: 'Innovative brainstorming, design intent, and experimental flows.',
+      tagline: "xAI's rebel",
     },
     {
-      name: "GPT",
+      name: 'GPT-5.4',
       icon: CircleStack,
-      bestFor: "Advanced",
-      strengths: "Deep reasoning for complex backend logic.",
-      advanced: true,
+      badge: 'Recommended',
+      desc: 'Deep reasoning for complex backend logic and integrations.',
+      tagline: "OpenAI's best",
+    },
+    {
+      name: 'Claude 3.7',
+      icon: Sparkles,
+      badge: 'Strategic',
+      desc: 'Thoughtful architecture guidance and beautiful UI generation.',
+      tagline: "Anthropic's ally",
     },
   ];
 </script>
@@ -73,10 +153,10 @@
     </div>
     <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-4 flex-wrap">
       <RocketLaunch class="h-12 w-12 text-[hsl(var(--pc))]" />
-      Launch Your Next Amazing Idea
+      Ship a full web app from one prompt
     </h1>
     <p class="mt-6 max-w-2xl text-xl text-[hsl(var(--pc)/0.9)]">
-      The all-in-one place for your full-stack applications. From Database schemas to UI components, ship to production in record time with AI assistance.
+      Describe it once—BYOB plans the UX, writes production-ready SvelteKit code, and keeps everything editable while you iterate in the three-pane workspace.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a href="https://byob.studio" target="_blank" class="btn btn-neutral btn-lg border-none">Start Building</a>
@@ -131,24 +211,18 @@
             </p>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {#each [
-              {icon: ServerStack, title: 'Serverless Backend', desc: 'AI writes server endpoints. Securely process forms, auth, and databases on the edge.'},
-              {icon: ServerStack, title: 'Supabase Integration', desc: 'Map tables, policies, and realtime data through AI prompts while keeping your Supabase project synced.'},
-              {icon: CursorArrowRays, title: 'Visual Editing', desc: 'Click any element in Live Preview to modify text or style instantly.'},
-              {icon: RocketLaunch, title: 'One-Click Deploy', desc: 'Ship frontend and backend to Cloudflare in seconds. Zero devops.'},
-              {icon: Photo, title: 'Image Understanding', desc: 'Upload wireframes or screenshots; BYOB converts them into pixel-perfect code.'},
-              {icon: Microphone, title: 'Voice Coding', desc: 'Dictate complex logic or backend requirements. "Create a POST route for user login."'},
-            {icon: ArrowUturnLeft, title: 'Time Travel', desc: 'Instant rollback capability. Save full-stack versions with descriptive messages.'},
-            {icon: PlayCircle, title: 'Project Controls', desc: 'Restart, stop, or delete your project with essential cloud controls.'},
-            {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all frontend and server changes with snapshots.'},
-            {icon: Sparkles, title: 'AI/SEO Discovery', desc: 'Auto-generate sitemap.xml, robots.txt, and /index.md for LLM-friendly page access.'},
-            ] as feature}
+            {#each featureCards as feature}
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6 hover:shadow-md transition-shadow">
-                <div class="h-10 w-10 flex items-center justify-center rounded-lg bg-[hsl(var(--p))/0.1] text-[hsl(var(--p))] mb-4">
-                  <svelte:component this={feature.icon} class="w-6 h-6" />
+                <div class="mb-4 flex items-start justify-between gap-3">
+                  <div class="h-10 w-10 flex items-center justify-center rounded-lg bg-[hsl(var(--p))/0.1] text-[hsl(var(--p))]">
+                    <svelte:component this={feature.icon} class="w-6 h-6" />
+                  </div>
+                  {#if feature.badge}
+                    <span class="badge badge-sm badge-info">{feature.badge}</span>
+                  {/if}
                 </div>
                 <h3 class="font-bold text-lg">{feature.title}</h3>
-                <p class="text-[hsl(var(--bc)/0.7)] mt-2 text-sm leading-relaxed">{feature.desc}</p>
+                <p class="text-[hsl(var(--bc)/0.7)] mt-2 text-sm leading-relaxed">{feature.description}</p>
               </div>
             {/each}
         </div>
@@ -167,31 +241,18 @@
 
       <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
         {#each aiModels as model}
-           <div class="relative rounded-2xl p-8 transition-all duration-300"
-                class:border-2={model.recommended}
-                class:border-[hsl(var(--in))]={model.recommended}
-                class:shadow-xl={model.recommended}
-                class:bg-[hsl(var(--b1))]={model.recommended}
-                class:border={!model.recommended}
-                class:border-[hsl(var(--b3))]={!model.recommended}
-           >
-             {#if model.recommended}
-                <span class="badge badge-info absolute -top-3 right-6">{model.bestFor}</span>
-             {:else if model.creative}
-                <span class="badge badge-accent absolute -top-3 right-6">{model.bestFor}</span>
-             {:else}
-                <span class="badge badge-secondary absolute -top-3 right-6">{model.bestFor}</span>
+           <div class="relative rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8 shadow-sm transition hover:border-[hsl(var(--p))] hover:shadow-xl">
+             {#if model.badge}
+                <span class="badge badge-sm badge-info uppercase tracking-wider absolute -top-3 right-6 text-xs">{model.badge}</span>
              {/if}
-             
              <div class="flex items-center gap-4">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--in))/0.15] text-[hsl(var(--in))]">
                     <svelte:component this={model.icon} class="h-7 w-7" />
                 </div>
                 <h3 class="text-2xl font-bold">{model.name}</h3>
              </div>
-             <div class="mt-6 space-y-3">
-                <p class="text-[hsl(var(--bc)/0.8)]">{model.strengths}</p>
-             </div>
+             <p class="mt-6 text-[hsl(var(--bc)/0.8)] text-sm leading-relaxed">{model.desc}</p>
+             <p class="mt-2 text-[hsl(var(--bc)/0.6)] text-xs italic">{model.tagline}</p>
            </div>
         {/each}
       </div>
@@ -343,6 +404,44 @@
                       <p class="text-sm font-semibold text-[hsl(var(--p))]">Test & Deploy</p>
                       <p class="text-xs text-[hsl(var(--bc)/0.7)]">
                           Preview Supabase endpoints while editing UI components, then ship everything with one click.
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-16 sm:py-24 bg-[hsl(var(--b2))]">
+      <div class="container mx-auto px-6">
+          <div class="rounded-3xl border border-[hsl(var(--b3))] bg-gradient-to-br from-[hsl(var(--p)/0.12)] via-[hsl(var(--b1))] to-[hsl(var(--b2))] p-10 shadow-2xl">
+              <div class="flex flex-wrap items-center gap-6">
+                  <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(var(--p)/0.2)] text-[hsl(var(--p))]">
+                      <Database class="w-7 h-7" />
+                  </div>
+                  <div>
+                      <h2 class="text-3xl font-bold">BYOB DB</h2>
+                      <p class="text-[hsl(var(--bc)/0.7)]">
+                          BYOB DB is a fully managed SQLite data service that scales across the cloud. It delivers a seamless, super-scalable database store for your apps  without needing manual provisioning.
+                      </p>
+                  </div>
+              </div>
+              <div class="mt-8 grid gap-6 md:grid-cols-3">
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">Schema Explorer</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          View tables, columns, and ER diagrams instantly via our browser-based database viewer.
+                      </p>
+                  </div>
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">SQL Scratchpad</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          Run read-only queries against BYOB DB for debugging, analytics, or demos without leaving the workspace.
+                      </p>
+                  </div>
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                      <p class="text-sm font-semibold text-[hsl(var(--p))]">Managed & Super Scalable</p>
+                      <p class="text-xs text-[hsl(var(--bc)/0.7)]">
+                          The platform keeps SQLite fast and reliable across distributed edge nodes—no ops required.
                       </p>
                   </div>
               </div>
