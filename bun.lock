@@ -42,9 +42,9 @@
         "vite-asset-uploader": "^0.2.0",
         "vite-log-capture": "0.1.3",
         "vite-plugin-devtools-json": "^1.0.0",
-        "vite-route-scanner": "^0.1.0",
+        "vite-route-scanner": "^0.1.1",
         "vite-sitemap-gen": "^0.0.2",
-        "vite-zipper": "0.3.14",
+        "vite-zipper": "0.3.15",
       },
     },
   },
@@ -867,11 +867,11 @@
 
     "vite-plugin-devtools-json": ["vite-plugin-devtools-json@1.0.0", "", { "dependencies": { "uuid": "^11.1.0" }, "peerDependencies": { "vite": "^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-MobvwqX76Vqt/O4AbnNMNWoXWGrKUqZbphCUle/J2KXH82yKQiunOeKnz/nqEPosPsoWWPP9FtNuPBSYpiiwkw=="],
 
-    "vite-route-scanner": ["vite-route-scanner@0.1.0", "", { "dependencies": { "esbuild": "^0.25.9", "estree-walker": "^2.0.2", "magic-string": "^0.30.18", "svelte": "^5.38.6" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-cO4t309DJhTiT+fknm+ptDLS6DVmHOkAaihUn9xxWlPsAT5dIAp7JvBQOa2p76t2KxoI5jF6I1/tJFVEb2q6jg=="],
+    "vite-route-scanner": ["vite-route-scanner@0.1.1", "", { "dependencies": { "esbuild": "^0.25.9", "estree-walker": "^2.0.2", "magic-string": "^0.30.18", "svelte": "^5.38.6" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-YfH/EtY5B3si1bMMzx4xdoxhyLT6265wdId3xC4HPjYlOLey0f77XvHZ0w7TVSu4LRtccGPXIhg5WpA9svVSkA=="],
 
     "vite-sitemap-gen": ["vite-sitemap-gen@0.0.2", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-l1qY2HnL9e8MD18hzr0sseRgPMpT2e+nn848zCt756Oz5A7M/XgCrpM6jTGYMLXghBu7DNWgI9sZPXlftPqidg=="],
 
-    "vite-zipper": ["vite-zipper@0.3.14", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-HVHaFp0JqmtNXII2WSZZDe3nEEAecCBt/hmVEyIm8tZ0TQOqcC8sUHvtv17RTK2tuvaGP9WjRV0bpK9ExJ+IIw=="],
+    "vite-zipper": ["vite-zipper@0.3.15", "", { "dependencies": { "archiver": "^7.0.1" }, "peerDependencies": { "vite": "^7.0.0" } }, "sha512-6vRSVVsnJyx7KT3TmLYZU6YSUNR8YRaFNZqPiPiR1uRd3wDaSBBe0pxVF1YslN6P1NB8ILqOuAq6VYpdxxibAA=="],
 
     "vitefu": ["vitefu@1.1.2", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-beta.0" }, "optionalPeers": ["vite"] }, "sha512-zpKATdUbzbsycPFBN71nS2uzBUQiVnFoOrr2rvqv34S1lcAgMKKkjWleLGeiJlZ8lwCXvtWaRn7R3ZC16SYRuw=="],
 
