@@ -7,7 +7,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "minty-fresh";
+  name: "byob";
   default: false;
   prefersdark: false;
   color-scheme: "light";
@@ -42,7 +42,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "minty-fresh-dark";
+  name: "byob-dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";

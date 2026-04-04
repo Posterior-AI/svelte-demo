@@ -7,7 +7,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "sandy-beach";
+  name: "byob";
   default: false;
   prefersdark: false;
   color-scheme: "light";
@@ -42,7 +42,7 @@
 }
 
 @plugin "daisyui/theme" {
-  name: "sandy-beach-dark";
+  name: "byob-dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
