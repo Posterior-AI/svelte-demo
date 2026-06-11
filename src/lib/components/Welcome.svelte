@@ -22,6 +22,11 @@
   import ServerStack from '~icons/heroicons/server-stack';
   import DocumentMagnifyingGlass from '~icons/heroicons/document-magnifying-glass';
   import Database from '~icons/heroicons/circle-stack';
+  import GlobeAlt from '~icons/heroicons/globe-alt';
+  import Clock from '~icons/heroicons/clock';
+  import CommandLine from '~icons/heroicons/command-line';
+  import DocumentDuplicate from '~icons/heroicons/document-duplicate';
+  import Users from '~icons/heroicons/users';
   import ApiWelcome from './ApiWelcome.svelte';
 
   const workspaceFeatures = [
@@ -33,7 +38,8 @@
     {
       icon: ChatBubbleLeftRight,
       title: "Center Pane: AI",
-      description: "Command center. Ask questions, build databases, generate server code, and drive development.",
+      description:
+        "Command center. Plan, ask, implement, test, recover, and drive follow-up edits.",
     },
     {
       icon: Eye,
@@ -68,18 +74,38 @@
     },
     {
       icon: DocumentMagnifyingGlass,
-      title: 'Live Web Search',
-      description: 'Agents fetch current API docs, facts, and references in real time while coding.',
+      title: 'Preflight Planning',
+      description:
+        'Refine the prompt, choose guided or fast setup, review UX direction, and approve the plan before code generation.',
     },
     {
       icon: RectangleGroup,
       title: 'Model Swapping',
-      description: 'Flip between Gemini 3.1, Grok, GPT-5.4, and Claude 3.7 to match the task.',
+      description:
+        'Start sessions on Gemini, Grok, GPT, or Claude. BYOB locks model per chat session for consistency.',
     },
     {
       icon: RocketLaunch,
       title: 'One-Click Deploy',
-      description: 'Publish frontend and backend to Cloudflare’s edge in seconds with zero DevOps.',
+      description: "Publish frontend and backend to Cloudflare's edge in seconds with zero DevOps.",
+    },
+    {
+      icon: DocumentChartBar,
+      title: 'Deployment Analytics',
+      description:
+        'Inspect Worker traffic, errors, CPU timing, subrequests, and custom-domain status after publish.',
+    },
+    {
+      icon: Users,
+      title: 'Team Collaboration',
+      description:
+        'Share projects with teammates and coordinate access so active sessions do not overwrite each other.',
+    },
+    {
+      icon: GlobeAlt,
+      title: 'Custom Domains',
+      description:
+        'Add root or subdomains with guided DNS records, verification hints, and automatic SSL activation.',
     },
     {
       icon: Photo,
@@ -107,6 +133,42 @@
       description: 'Hot Module Replacement keeps the browser view and backend responses in perfect sync.',
     },
     {
+      icon: PlayCircle,
+      title: 'AI Testing Agent',
+      description:
+        'Run full-site or feature-based testing sessions with browser extension support and structured reports.',
+    },
+    {
+      icon: CommandLine,
+      title: 'Codex Agent MCP',
+      description:
+        'Connect Codex to approved BYOB projects for project context, code edits, testing, deploys, DNS, and billing links.',
+    },
+    {
+      icon: DocumentDuplicate,
+      title: 'Project Templates',
+      description:
+        'Start from blank, private, shared, or public templates, then save successful projects as reusable templates.',
+    },
+    {
+      icon: DocumentMagnifyingGlass,
+      title: 'SEO & LLM Output',
+      description:
+        'Generate metadata, sitemap and indexing assets, and LLM-friendly page access patterns.',
+    },
+    {
+      icon: Clock,
+      title: 'Context Tracking',
+      description:
+        'Monitor context fill and reset at the right time so long sessions stay stable and consistent.',
+    },
+    {
+      icon: CircleStack,
+      title: 'Flexible Pricing',
+      description:
+        'Use pay-as-you-go credits or upgrade to Pro, Max, or Enterprise plans with included monthly credits.',
+    },
+    {
       icon: DocumentChartBar,
       title: 'Change History',
       description: 'Track every frontend and server-side change with descriptive snapshots.',
@@ -129,19 +191,52 @@
       tagline: "xAI's rebel",
     },
     {
-      name: 'GPT-5.4',
+      name: 'GPT-5.3 Codex',
       icon: CircleStack,
       badge: 'Recommended',
       desc: 'Deep reasoning for complex backend logic and integrations.',
       tagline: "OpenAI's best",
     },
     {
-      name: 'Claude 3.7',
+      name: 'Claude Sonnet 4.6',
       icon: Sparkles,
       badge: 'Strategic',
       desc: 'Thoughtful architecture guidance and beautiful UI generation.',
       tagline: "Anthropic's ally",
     },
+  ];
+
+  const pricingPlans = [
+    {
+      name: 'Pay as you go',
+      price: '$0',
+      detail: '$1 = 100 credits. Top up when you need more and keep unused credits.',
+      icon: Bolt,
+    },
+    {
+      name: 'Pro',
+      price: '$25/mo',
+      detail: 'Starts with 2,000 credits/month plus BYOB DB, testing, custom domains, and collaborators.',
+      icon: Sparkles,
+    },
+    {
+      name: 'Max',
+      price: '$79/mo',
+      detail: 'Starts with 8,000 credits/month, rollover, priority model access, and priority support.',
+      icon: CursorArrowRays,
+    },
+    {
+      name: 'Enterprise',
+      price: 'Custom',
+      detail: 'White-label, private cloud, SSO/SAML, governance, custom agents, and dedicated support.',
+      icon: GlobeAlt,
+    },
+  ];
+
+  const agentHighlights = [
+    'Approve scoped project access from BYOB',
+    'Read context, edit files, test previews, and deploy',
+    'Manage custom domains, DNS instructions, credits, and billing links',
   ];
 </script>
 
@@ -156,7 +251,7 @@
       Ship a full web app from one prompt
     </h1>
     <p class="mt-6 max-w-2xl text-xl text-[hsl(var(--pc)/0.9)]">
-      Describe it once—BYOB plans the UX, writes production-ready SvelteKit code, and keeps everything editable while you iterate in the three-pane workspace.
+      Describe it once. BYOB plans the UX, writes production-ready SvelteKit code, connects data and deploys, then keeps everything editable while you iterate in the three-pane workspace.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
       <a href="https://byob.studio" target="_blank" class="btn btn-neutral btn-lg border-none">Start Building</a>
@@ -177,7 +272,7 @@
           Workspace Layout
         </h2>
         <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-          Expertly crafted panes for maximum productivity. Everything you need for frontend and backend dev in one fluid interface.
+          Code, intent, and rendered output stay visible together so the project remains inspectable, editable, and shippable.
         </p>
       </div>
 
@@ -196,7 +291,7 @@
       </div>
       <div class="text-center text-[hsl(var(--bc)/0.8)] flex items-center justify-center gap-2 bg-[hsl(var(--b1))] rounded-lg p-4 border border-[hsl(var(--b3))] max-w-2xl mx-auto shadow-sm">
           <LightBulb class="w-5 h-5 text-[hsl(var(--in))]" />
-          <span class="font-semibold">Tip:</span> Swap panes, drag to resize, or minimize to focus—your workflow, your way!
+          <span class="font-semibold">Tip:</span> Start with a prompt, review the preflight plan, then let Tool Mode implement.
       </div>
     </div>
   </section>
@@ -207,7 +302,7 @@
         <div class="text-center">
             <h2 class="text-3xl md:text-4xl font-bold">Everything you need to ship</h2>
             <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-                We've packed every tool a modern full-stack developer needs into one workspace.
+                BYOB combines planning, implementation, preview, testing, backend work, deployment, analytics, and Codex agent access in one workspace.
             </p>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -239,7 +334,7 @@
         </p>
       </div>
 
-      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {#each aiModels as model}
            <div class="relative rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8 shadow-sm transition hover:border-[hsl(var(--p))] hover:shadow-xl">
              {#if model.badge}
@@ -314,26 +409,29 @@
         <div class="text-center">
             <h2 class="text-3xl md:text-4xl font-bold">Professional Workflow</h2>
             <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-                Maximize efficiency with this proven development cycle.
+                Start conversationally, approve the shape, implement with Tool Mode, then test and deploy.
             </p>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {#each [1,2,3,4] as step (step)}
+              {#each [1,2,3,4,5] as step (step)}
               <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6 text-center">
                 <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--p))] text-[hsl(var(--pc))] font-bold text-xl mb-4">{step}</div>
                 <h3 class="font-bold text-lg">
-                  {step === 1 ? 'Strategize' :
-                   step === 2 ? 'Execute' :
-                   step === 3 ? 'Review & Refine' : 'Save Progress'}
+                  {step === 1 ? 'Describe' :
+                   step === 2 ? 'Preflight' :
+                   step === 3 ? 'Implement' :
+                   step === 4 ? 'Test & Refine' : 'Deploy'}
                 </h3>
                 <p class="text-sm text-[hsl(var(--bc)/0.7)] mt-2">
                   {step === 1
-                    ? 'Outline objectives and define architecture with the AI assistant in Chat Mode.'
+                    ? 'State the product outcome, audience, constraints, and required integrations.'
                     : step === 2
-                    ? 'Generate files and install dependencies using Tool Mode & Quick Actions.'
+                    ? 'Review UX direction, data choices, and the complete implementation plan.'
                     : step === 3
-                    ? 'Monitor output, refine in the Code Editor, and test in the Live Preview.'
-                    : 'Create version snapshots at stable milestones to ensure you always have a checkpoint.'}
+                    ? 'Generate files, install dependencies, and wire services using Tool Mode.'
+                    : step === 4
+                    ? 'Run feature-based or full-site tests, save checkpoints, and refine safely.'
+                    : 'Publish to a BYOB URL, connect domains, and inspect production analytics.'}
                 </p>
               </div>
             {/each}
@@ -354,7 +452,14 @@
             {#each [
               {icon: CursorArrowRays, title: 'Visual Editing Mode', desc: 'Click any element in Live Preview to modify it instantly. Changes are automatically written back to source code.'},
               {icon: ArrowUturnLeft, title: 'Version Control', desc: 'Built-in snapshots with instant rollback capability. Save versions with descriptive messages.'},
-              {icon: PlayCircle, title: 'Project Controls', desc: 'Restart, stop, or delete your project with essential controls in the top-right corner.'},
+              {icon: Users, title: 'Team Collaboration', desc: 'Share projects with teammates and coordinate access across active work sessions.'},
+              {icon: DocumentDuplicate, title: 'Templates', desc: 'Start from blank, private, shared, or public templates and save reusable project foundations.'},
+              {icon: GlobeAlt, title: 'Custom Domain Wizard', desc: 'Connect root or subdomains with guided DNS records, verification, and automatic SSL activation.'},
+              {icon: DocumentChartBar, title: 'Deployment Analytics', desc: 'Inspect live Worker traffic, errors, CPU timing, subrequests, and deployment status.'},
+              {icon: PlayCircle, title: 'Testing Agent', desc: 'Run full-site or feature-based tests with extension support and detailed reports.'},
+              {icon: CommandLine, title: 'Codex Agent MCP', desc: 'Let Codex inspect context, edit code, test previews, deploy, and manage platform actions from approved projects.'},
+              {icon: Clock, title: 'Context + Model Guardrails', desc: 'Track context fill and keep one model per session to reduce long-thread drift.'},
+              {icon: CircleStack, title: 'Pay-As-You-Go + Subscriptions', desc: 'Choose flexible top-ups or Pro/Max monthly plans with included credits.'},
               {icon: Eye, title: 'Live Preview', desc: 'Real-time, interactive preview with instant updates. No manual compilation needed.'},
               {icon: RectangleGroup, title: 'Customizable Layout', desc: 'Swap panes, drag to resize, or minimize sections. Adapt the workspace to your preferences.'},
               {icon: DocumentChartBar, title: 'Change History', desc: 'Comprehensive log of all changes with version snapshots. Track your project evolution effortlessly.'},
@@ -383,7 +488,7 @@
                       <span class="badge badge-primary text-xs uppercase tracking-wide">Supabase Ready</span>
                       <p class="text-[hsl(var(--bc)/0.7)]">
                           Bring your Supabase project into the workspace. Define tables, policies, and realtime
-                          APIs using concise prompts and keep the schema synced with generated code.
+                          APIs using concise prompts, run migrations, generate TypeScript types, and keep the schema synced with generated code.
                       </p>
                   </div>
               </div>
@@ -421,7 +526,7 @@
                   <div>
                       <h2 class="text-3xl font-bold">BYOB DB</h2>
                       <p class="text-[hsl(var(--bc)/0.7)]">
-                          BYOB DB is a fully managed SQLite data service that scales across the cloud. It delivers a seamless, super-scalable database store for your apps  without needing manual provisioning.
+                          BYOB DB is a managed SQLite data service for apps that need durable storage without separate database operations or manual provisioning.
                       </p>
                   </div>
               </div>
@@ -449,6 +554,58 @@
       </div>
   </section>
 
+  <section class="py-16 sm:py-24">
+      <div class="container mx-auto px-6">
+          <div class="rounded-3xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-10 shadow-xl">
+              <div class="flex flex-wrap items-center gap-6">
+                  <div class="flex h-14 w-14 items-center justify-center rounded-full bg-[hsl(var(--p)/0.2)] text-[hsl(var(--p))]">
+                      <CommandLine class="w-7 h-7" />
+                  </div>
+                  <div>
+                      <h2 class="text-3xl font-bold">BYOB Agent MCP for Codex</h2>
+                      <p class="text-[hsl(var(--bc)/0.7)]">
+                          Install the BYOB agent connector once, approve the projects it can touch, and let Codex work directly against your BYOB workspace.
+                      </p>
+                  </div>
+              </div>
+              <div class="mt-8 rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b2))] p-5 font-mono text-sm text-[hsl(var(--bc)/0.8)]">
+                  npx -y byob-agent-mcp codex install --client-name "Codex"
+              </div>
+              <div class="mt-6 grid gap-4 md:grid-cols-3">
+                  {#each agentHighlights as item}
+                      <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-4 shadow-sm">
+                          <CheckCircle class="mb-2 h-5 w-5 text-[hsl(var(--p))]" />
+                          <p class="text-sm font-semibold">{item}</p>
+                      </div>
+                  {/each}
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section class="py-16 sm:py-24 bg-[hsl(var(--b2))]">
+      <div class="container mx-auto px-6">
+          <div class="text-center">
+              <h2 class="text-3xl md:text-4xl font-bold">Credits and Plans</h2>
+              <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
+                  Start with credits, then upgrade when BYOB becomes part of your regular build workflow.
+              </p>
+          </div>
+          <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {#each pricingPlans as plan}
+                  <div class="rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-6 shadow-sm">
+                      <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-[hsl(var(--p)/0.12)] text-[hsl(var(--p))]">
+                          <svelte:component this={plan.icon} class="h-6 w-6" />
+                      </div>
+                      <h3 class="text-xl font-bold">{plan.name}</h3>
+                      <p class="mt-2 text-2xl font-extrabold text-[hsl(var(--p))]">{plan.price}</p>
+                      <p class="mt-3 text-sm leading-relaxed text-[hsl(var(--bc)/0.7)]">{plan.detail}</p>
+                  </div>
+              {/each}
+          </div>
+      </div>
+  </section>
+
   <section class="py-12 px-6">
       <div class="container mx-auto">
           <ApiWelcome />
@@ -461,7 +618,7 @@
           <div class="rounded-2xl bg-gradient-to-r from-[hsl(var(--p))] to-[hsl(var(--in))] p-12 text-center text-[hsl(var(--pc))]">
               <h2 class="text-3xl md:text-4xl font-bold">Ready to Supercharge Your Development?</h2>
               <p class="mt-4 max-w-2xl mx-auto text-lg text-[hsl(var(--pc)/0.9)]">
-                Experience the future of web development with AI-powered assistance, real-time previews, and seamless version control—all in one workspace.
+                Ship with AI coding, custom domains, integrated testing, and flexible pricing in one workspace.
               </p>
               <div class="mt-8 flex justify-center gap-4">
                   <button class="btn btn-neutral btn-lg">Start Building Now →</button>
