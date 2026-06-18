@@ -1,5 +1,4 @@
 <script lang="ts">
-	import SvelteSeo from 'svelte-seo';
 	import { page } from '$app/stores';
 
 	let {
@@ -9,69 +8,64 @@
 		canonical = '',
 		noindex = false,
 		nofollow = false,
-		// Default to website
 		type = 'website',
-		// Images for sharing
 		ogImages = [],
 		twitterImage = '',
 		twitterCard = 'summary_large_image',
-		// Structured Data
 		breadcrumbs = [],
 		jsonLd = {},
 		applicationName = 'BYOB App'
 	} = $props();
 
-	// Dynamic Base URL Logic (Defaults to byob.page, uses window/page origin if available)
 	let siteUrl = $derived($page.url ? $page.url.origin : 'https://byob.page');
 	let currentPath = $derived($page.url ? $page.url.pathname : '/');
-	
-	// Auto-generate canonical if not explicit
 	let finalCanonical = $derived(canonical || `${siteUrl}${currentPath}`);
-
-	// Construct Breadcrumb JSON-LD
-	let breadcrumbSchema = $derived(breadcrumbs.length > 0 ? {
-		"@context": "https://schema.org",
-		"@type": "BreadcrumbList",
-		"itemListElement": breadcrumbs.map((crumb: any, index: number) => ({
-			"@type": "ListItem",
-			"position": index + 1,
-			"name": crumb.name,
-			"item": crumb.path.startsWith('http') ? crumb.path : `${siteUrl}${crumb.path}`
-		}))
-	} : {});
-
-	// Merge Custom JSON-LD with Breadcrumbs
-	let finalJsonLd = $derived({
-		...jsonLd,
-		...breadcrumbSchema
-	});
+	let robots = $derived(`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`);
+	let ogImage = $derived(ogImages[0]?.url || twitterImage || '');
+	let breadcrumbSchema = $derived(
+		breadcrumbs.length > 0
+			? {
+					'@context': 'https://schema.org',
+					'@type': 'BreadcrumbList',
+					itemListElement: breadcrumbs.map((crumb: any, index: number) => ({
+						'@type': 'ListItem',
+						position: index + 1,
+						name: crumb.name,
+						item: crumb.path.startsWith('http') ? crumb.path : `${siteUrl}${crumb.path}`
+					}))
+				}
+			: {}
+	);
+	let finalJsonLd = $derived({ ...jsonLd, ...breadcrumbSchema });
+	let jsonLdText = $derived(JSON.stringify(finalJsonLd));
 </script>
 
-<SvelteSeo
-	{title}
-	{description}
-	{keywords}
-	{applicationName}
-	canonical={finalCanonical}
-	{noindex}
-	{nofollow}
-	
-	openGraph={{
-		title,
-		description,
-		url: finalCanonical,
-		type,
-		images: ogImages,
-		site_name: applicationName
-	}}
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<meta name="keywords" content={keywords} />
+	<meta name="application-name" content={applicationName} />
+	<meta name="robots" content={robots} />
+	<link rel="canonical" href={finalCanonical} />
 
-	twitter={{
-		card: twitterCard,
-		site: '@byob_page', 
-		title,
-		description,
-		image: twitterImage || (ogImages[0]?.url)
-	}}
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={finalCanonical} />
+	<meta property="og:type" content={type} />
+	<meta property="og:site_name" content={applicationName} />
+	{#if ogImage}
+		<meta property="og:image" content={ogImage} />
+	{/if}
 
-	jsonLd={finalJsonLd}
-/>
+	<meta name="twitter:card" content={twitterCard} />
+	<meta name="twitter:site" content="@byob_page" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	{#if ogImage}
+		<meta name="twitter:image" content={ogImage} />
+	{/if}
+
+	{#if Object.keys(finalJsonLd).length > 0}
+		<script type="application/ld+json">{jsonLdText}</script>
+	{/if}
+</svelte:head>

@@ -1,10 +1,4 @@
 <script lang="ts">
-	interface Window {
-		BYOB_CORE?: {
-			connectToViteHMR: (hot: any) => void;
-		};
-	}
-
 	import '../app.css';
 
 	let { children } = $props();
@@ -13,8 +7,11 @@
 
 	onMount(() => {
 		if (browser && dev && typeof window != 'undefined') {
-			if (window.BYOB_CORE && typeof window.BYOB_CORE.connectToViteHMR === 'function') {
-				window.BYOB_CORE.connectToViteHMR(import.meta.hot);
+			const byobCore = (window as Window & {
+				BYOB_CORE?: { connectToViteHMR?: (hot: unknown) => void };
+			}).BYOB_CORE;
+			if (byobCore && typeof byobCore.connectToViteHMR === 'function') {
+				byobCore.connectToViteHMR(import.meta.hot);
 			} else {
 				console.warn(
 					'[BYOB Layout] HMR connector function not found. Ensure the main byob.ts script is loaded correctly before this component.'

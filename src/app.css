@@ -3,12 +3,12 @@
 @plugin '@tailwindcss/typography';
 
 @plugin "daisyui" {
-  /* DaisyUI core */
+  themes: byob --default, byob-dark --prefersdark;
 }
 
 @plugin "daisyui/theme" {
   name: "byob";
-  default: false;
+  default: true;
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: oklch(98% 0.002 247.839);
@@ -76,12 +76,6 @@
   --noise: 1;
 }
 
-
-
-
-
-/* Map DaisyUI v5 theme tokens to legacy aliases used in components
-   Ensures hsl(var(--p)), hsl(var(--b2)), etc. resolve correctly */
 :root,
 :host {
   --p: var(--color-primary);
@@ -104,4 +98,40 @@
   --wac: var(--color-warning-content);
   --er: var(--color-error);
   --erc: var(--color-error-content);
+
+  --byob-background: var(--color-base-100);
+  --byob-foreground: var(--color-base-content);
+  --byob-surface: var(--color-base-200);
+  --byob-surface-raised: var(--color-base-100);
+  --byob-border: color-mix(in oklch, var(--color-base-content) 14%, transparent);
+  --byob-primary: var(--color-primary);
+  --byob-primary-foreground: var(--color-primary-content);
+  --byob-muted: color-mix(in oklch, var(--color-base-content) 62%, transparent);
+  --byob-ring: color-mix(in oklch, var(--color-primary) 70%, transparent);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--byob-background);
+  color: var(--byob-foreground);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.metric,
+.stat,
+.price,
+td,
+th {
+  font-variant-numeric: tabular-nums;
 }
