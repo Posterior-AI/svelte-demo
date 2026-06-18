@@ -37,24 +37,24 @@
 	}
 </script>
 
-<div class="card shadow-xl border border-[var(--border)] w-full max-w-3xl mx-auto my-12 overflow-hidden">
+<div class="byob-card shadow-xl border border-[var(--border)] w-full max-w-3xl mx-auto my-12 overflow-hidden">
 	<div class="bg-gradient-to-r from-[color-mix(in_oklch,var(--color-primary)_18%,transparent)] to-[color-mix(in_oklch,var(--color-secondary)_18%,transparent)] p-6 border-b border-[var(--border)]">
-		<h2 class="card-title text-2xl font-bold">⚡ Full-Stack API Integrated</h2>
+		<h2 class="byob-card-title text-2xl font-bold">⚡ Full-Stack API Integrated</h2>
 		<p class="text-[color-mix(in_oklch,var(--color-base-content)_78%,transparent)] mt-2">
 			These requests hit the <code>/api/welcome</code> endpoint. BYOB's AI now builds your frontend UI <strong>and</strong> your backend serverless routes.
 		</p>
 	</div>
 	
-	<div class="card-body grid grid-cols-1 md:grid-cols-2 gap-8">
+	<div class="byob-card-body grid grid-cols-1 md:grid-cols-2 gap-8">
 		<!-- GET Welcome -->
 		<div class="space-y-4">
 			<h3 class="font-semibold text-lg border-b border-[var(--border)] pb-2 text-[var(--color-primary)]">1. Test GET Route</h3>
-			<button class="btn btn-outline btn-primary w-full" onclick={testGet} disabled={isLoading}>
+			<button class="byob-btn byob-btn-outline byob-btn-primary w-full" onclick={testGet} disabled={isLoading}>
 				Fetch Server Time
 			</button>
 			
 			{#if getResponse}
-				<div class="alert alert-success text-sm shadow-sm mt-4">
+				<div class="byob-alert byob-alert-success text-sm shadow-sm mt-4">
 					<span>{getResponse}</span>
 				</div>
 			{/if}
@@ -63,21 +63,21 @@
 		<!-- POST Welcome -->
 		<div class="space-y-4">
 			<h3 class="font-semibold text-lg border-b border-[var(--border)] pb-2 text-[var(--color-secondary)]">2. Test POST Route</h3>
-			<div class="join w-full">
+			<div class="byob-join w-full">
 				<input 
 					type="text" 
 					bind:value={postInput} 
 					placeholder="Enter your name..." 
-					class="input input-bordered join-item w-full"
+					class="byob-input byob-input-bordered byob-join-item w-full"
 					onkeydown={(e) => e.key === 'Enter' && testPost()}
 				/>
-				<button class="btn btn-secondary join-item" onclick={testPost} disabled={isLoading || !postInput}>
+				<button class="byob-btn byob-btn-secondary byob-join-item" onclick={testPost} disabled={isLoading || !postInput}>
 					Send
 				</button>
 			</div>
 			
 			{#if postResponse}
-				<div class="alert alert-info text-sm shadow-sm mt-4">
+				<div class="byob-alert byob-alert-info text-sm shadow-sm mt-4">
 					<span>{postResponse}</span>
 				</div>
 			{/if}

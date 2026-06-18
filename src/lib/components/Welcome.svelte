@@ -27,7 +27,11 @@
   import CommandLine from '~icons/heroicons/command-line';
   import DocumentDuplicate from '~icons/heroicons/document-duplicate';
   import Users from '~icons/heroicons/users';
+  import { BYOB_UI_KIT } from '$lib/byob-ui-kit';
   import ApiWelcome from './ApiWelcome.svelte';
+
+  const uiKitClass = `byob-kit byob-kit-${BYOB_UI_KIT}`;
+  const uiKitLabel = BYOB_UI_KIT === 'template-neutral' ? 'template neutral' : BYOB_UI_KIT;
 
   const workspaceFeatures = [
     {
@@ -241,10 +245,10 @@
 </script>
 
 <!-- HERO HEADER -->
-<header class="w-full bg-gradient-to-br from-[hsl(var(--a))] to-[hsl(var(--s))] text-[hsl(var(--pc))]">
+<header class={`w-full bg-gradient-to-br from-[hsl(var(--a))] to-[hsl(var(--s))] text-[hsl(var(--pc))] ${uiKitClass}`}>
   <div class="container mx-auto flex flex-col items-center justify-center text-center px-6 py-20">
     <div class="mb-4 inline-block rounded-full bg-[hsl(var(--pc))/0.2] px-4 py-1 text-sm font-semibold">
-      ✨ Build Full-Stack Apps with AI - No Code Required
+      Selected UI kit: {uiKitLabel}
     </div>
     <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight flex items-center justify-center gap-4 flex-wrap">
       <RocketLaunch class="h-12 w-12 text-[hsl(var(--pc))]" />
@@ -254,13 +258,13 @@
       Describe it once. BYOB plans the UX, writes production-ready SvelteKit code, connects data and deploys, then keeps everything editable while you iterate in the three-pane workspace.
     </p>
     <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <a href="https://byob.studio" target="_blank" class="btn btn-neutral btn-lg border-none">Start Building</a>
-      <a href="https://byob.studio" target="_blank" class="btn btn-ghost btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">View Showcase</a>
+      <a href="https://byob.studio" target="_blank" class="byob-btn byob-btn-primary byob-btn-lg border-none">Start Building</a>
+      <a href="https://byob.studio" target="_blank" class="byob-btn byob-btn-ghost byob-btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">View Showcase</a>
     </div>
   </div>
 </header>
 
-<main class="bg-[hsl(var(--b1))] text-[hsl(var(--bc))]">
+<main class={`bg-[hsl(var(--b1))] text-[hsl(var(--bc))] ${uiKitClass}`}>
 
 
   <!-- WORKSPACE FEATURES -->
@@ -313,7 +317,7 @@
                     <svelte:component this={feature.icon} class="w-6 h-6" />
                   </div>
                   {#if feature.badge}
-                    <span class="badge badge-sm badge-info">{feature.badge}</span>
+                    <span class="byob-badge byob-badge-sm byob-badge-info">{feature.badge}</span>
                   {/if}
                 </div>
                 <h3 class="font-bold text-lg">{feature.title}</h3>
@@ -338,7 +342,7 @@
         {#each aiModels as model}
            <div class="relative rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b1))] p-8 shadow-sm transition hover:border-[hsl(var(--p))] hover:shadow-xl">
              {#if model.badge}
-                <span class="badge badge-sm badge-info uppercase tracking-wider absolute -top-3 right-6 text-xs">{model.badge}</span>
+                <span class="byob-badge byob-badge-sm byob-badge-info uppercase tracking-wider absolute -top-3 right-6 text-xs">{model.badge}</span>
              {/if}
              <div class="flex items-center gap-4">
                 <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[hsl(var(--in))/0.15] text-[hsl(var(--in))]">
@@ -485,7 +489,7 @@
                   </div>
                   <div>
                       <h2 class="text-3xl font-bold">Supabase Integration</h2>
-                      <span class="badge badge-primary text-xs uppercase tracking-wide">Supabase Ready</span>
+                      <span class="byob-badge byob-badge-primary text-xs uppercase tracking-wide">Supabase Ready</span>
                       <p class="text-[hsl(var(--bc)/0.7)]">
                           Bring your Supabase project into the workspace. Define tables, policies, and realtime
                           APIs using concise prompts, run migrations, generate TypeScript types, and keep the schema synced with generated code.
@@ -621,8 +625,8 @@
                 Ship with AI coding, custom domains, integrated testing, and flexible pricing in one workspace.
               </p>
               <div class="mt-8 flex justify-center gap-4">
-                  <button class="btn btn-neutral btn-lg">Start Building Now →</button>
-                  <button class="btn btn-ghost btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">Explore Features</button>
+                  <button class="byob-btn byob-btn-primary byob-btn-lg">Start Building Now →</button>
+                  <button class="byob-btn byob-btn-ghost byob-btn-lg text-[hsl(var(--pc))] hover:bg-[hsl(var(--pc))/0.2]">Explore Features</button>
               </div>
           </div>
       </div>
@@ -630,19 +634,19 @@
 
   <div class="bg-gradient-to-r from-indigo-800 to-purple-800 text-white p-8 text-center mt-20 rounded-t-3xl shadow-inner border-t border-indigo-900 animate-fade-in-up">
     <div class="flex flex-col items-center gap-2">
-      <div class="divider w-48 mx-auto border-white/20"></div>
+      <div class="byob-divider w-48 mx-auto border-white/20"></div>
       <p class="font-semibold text-lg flex items-center gap-2 justify-center">
         <RocketLaunch class="w-5 h-5 text-[#667eea]" />
         © 2026 <span class="bg-gradient-to-r from-[#667eea] to-[#764ba2] bg-clip-text text-transparent font-bold">Build Your Own Buzz</span>. All rights reserved.
       </p>
       <div class="flex gap-6 justify-center mt-4">
-        <a href="https://byob.studio/contact" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
+        <a href="https://byob.studio/contact" target="_blank" class="byob-link text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
           <ChatBubbleLeftRight class="w-4 h-4" /> Contact
         </a>
-        <a href="https://byob.studio/faq" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
+        <a href="https://byob.studio/faq" target="_blank" class="byob-link text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
           <DeviceTablet class="w-4 h-4" /> FAQ
         </a>
-        <a href="https://byob.studio" target="_blank" class="link link-hover text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
+        <a href="https://byob.studio" target="_blank" class="byob-link text-white/70 transition hover:scale-110 flex items-center gap-1 hover:text-white">
           <Window class="w-4 h-4" /> BYOB Studio
         </a>
       </div>
