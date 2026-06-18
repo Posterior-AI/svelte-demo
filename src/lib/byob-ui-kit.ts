@@ -1,2 +1,1 @@
-export const BYOB_UI_KIT = 'daisyui';
-
+export const BYOB_UI_KIT = 'template-neutral';

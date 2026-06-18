@@ -86,7 +86,7 @@
   --input: var(--byob-border);
   --ring: var(--byob-ring);
   --radius: 0.75rem;
-  --byob-ui-kit: "daisyui";
+  --byob-ui-kit: "template-neutral";
 }
 
 @theme inline {
