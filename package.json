@@ -4,7 +4,15 @@
 	"version": "0.0.1",
 	"type": "module",
 	"dependencies": {
+		"@skeletonlabs/skeleton": "latest",
+		"@skeletonlabs/skeleton-svelte": "latest",
 		"@types/turndown": "^5.0.6",
+		"bits-ui": "latest",
+		"clsx": "latest",
+		"flowbite": "latest",
+		"flowbite-svelte": "latest",
+		"tailwind-merge": "latest",
+		"tailwind-variants": "latest",
 		"turndown": "^7.2.0"
 	},
 	"scripts": {

@@ -1,6 +1,13 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+@plugin 'flowbite/plugin';
+@source '../node_modules/flowbite-svelte/dist';
+@source '../node_modules/flowbite/dist';
+@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+@source '../node_modules/@skeletonlabs/skeleton/dist';
+
+@custom-variant dark (&:is(.dark *));
 
 @plugin "daisyui" {
   themes: byob --default, byob-dark --prefersdark;
@@ -108,6 +115,54 @@
   --byob-primary-foreground: var(--color-primary-content);
   --byob-muted: color-mix(in oklch, var(--color-base-content) 62%, transparent);
   --byob-ring: color-mix(in oklch, var(--color-primary) 70%, transparent);
+
+  --background: var(--byob-background);
+  --foreground: var(--byob-foreground);
+  --card: var(--byob-surface-raised);
+  --card-foreground: var(--byob-foreground);
+  --popover: var(--byob-surface-raised);
+  --popover-foreground: var(--byob-foreground);
+  --primary: var(--byob-primary);
+  --primary-foreground: var(--byob-primary-foreground);
+  --secondary: var(--byob-surface);
+  --secondary-foreground: var(--byob-foreground);
+  --muted: var(--byob-surface);
+  --muted-foreground: var(--byob-muted);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-accent-content);
+  --destructive: var(--color-error);
+  --destructive-foreground: var(--color-error-content);
+  --border: var(--byob-border);
+  --input: var(--byob-border);
+  --ring: var(--byob-ring);
+  --radius: 0.75rem;
+  --byob-ui-kit: "daisyui";
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 body {
