@@ -37,10 +37,10 @@
 	}
 </script>
 
-<div class="card bg-base-100 shadow-xl border border-base-300 w-full max-w-3xl mx-auto my-12 overflow-hidden">
-	<div class="bg-gradient-to-r from-primary/20 to-secondary/20 p-6 border-b border-base-300">
+<div class="card shadow-xl border border-[var(--border)] w-full max-w-3xl mx-auto my-12 overflow-hidden">
+	<div class="bg-gradient-to-r from-[color-mix(in_oklch,var(--color-primary)_18%,transparent)] to-[color-mix(in_oklch,var(--color-secondary)_18%,transparent)] p-6 border-b border-[var(--border)]">
 		<h2 class="card-title text-2xl font-bold">⚡ Full-Stack API Integrated</h2>
-		<p class="text-base-content/80 mt-2">
+		<p class="text-[color-mix(in_oklch,var(--color-base-content)_78%,transparent)] mt-2">
 			These requests hit the <code>/api/welcome</code> endpoint. BYOB's AI now builds your frontend UI <strong>and</strong> your backend serverless routes.
 		</p>
 	</div>
@@ -48,13 +48,13 @@
 	<div class="card-body grid grid-cols-1 md:grid-cols-2 gap-8">
 		<!-- GET Welcome -->
 		<div class="space-y-4">
-			<h3 class="font-semibold text-lg border-b pb-2 text-primary">1. Test GET Route</h3>
+			<h3 class="font-semibold text-lg border-b border-[var(--border)] pb-2 text-[var(--color-primary)]">1. Test GET Route</h3>
 			<button class="btn btn-outline btn-primary w-full" onclick={testGet} disabled={isLoading}>
 				Fetch Server Time
 			</button>
 			
 			{#if getResponse}
-				<div class="alert alert-success bg-success/10 text-success-content text-sm shadow-sm mt-4">
+				<div class="alert alert-success text-sm shadow-sm mt-4">
 					<span>{getResponse}</span>
 				</div>
 			{/if}
@@ -62,7 +62,7 @@
 
 		<!-- POST Welcome -->
 		<div class="space-y-4">
-			<h3 class="font-semibold text-lg border-b pb-2 text-secondary">2. Test POST Route</h3>
+			<h3 class="font-semibold text-lg border-b border-[var(--border)] pb-2 text-[var(--color-secondary)]">2. Test POST Route</h3>
 			<div class="join w-full">
 				<input 
 					type="text" 
@@ -77,7 +77,7 @@
 			</div>
 			
 			{#if postResponse}
-				<div class="alert alert-info bg-info text-info-content text-sm shadow-sm mt-4">
+				<div class="alert alert-info text-sm shadow-sm mt-4">
 					<span>{postResponse}</span>
 				</div>
 			{/if}
