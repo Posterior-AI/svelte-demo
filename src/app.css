@@ -1,12 +1,6 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
-@plugin 'flowbite/plugin';
-@source '../node_modules/flowbite-svelte/dist';
-@source '../node_modules/flowbite/dist';
-@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
-@source '../node_modules/@skeletonlabs/skeleton/dist';
-
 @custom-variant dark (&:is(.dark *));
 
 /* BYOB_UI_THEME_START */
@@ -86,7 +80,7 @@
   --input: var(--byob-border);
   --ring: var(--byob-ring);
   --radius: 0.75rem;
-  --byob-ui-kit: "template-neutral";
+  --byob-ui-kit: "shadcn-svelte";
 }
 
 @theme inline {
@@ -155,38 +149,12 @@ th {
       box-shadow 180ms ease;
   }
 
-  .byob-kit-daisyui {
-    --byob-control-radius: 2rem;
-    --byob-card-radius: 1.5rem;
-    --byob-control-shadow: 0 16px 32px color-mix(in oklch, var(--color-primary) 24%, transparent);
-    --byob-card-shadow: 0 20px 44px color-mix(in oklch, var(--color-primary) 10%, transparent);
-  }
-
   .byob-kit-shadcn-svelte {
     --byob-control-radius: 0.5rem;
     --byob-card-radius: 0.5rem;
     --byob-control-shadow: none;
     --byob-card-shadow: none;
     --byob-panel-border: color-mix(in oklch, var(--color-base-content) 18%, transparent);
-  }
-
-  .byob-kit-flowbite-svelte {
-    --byob-control-radius: 0.5rem;
-    --byob-card-radius: 0.75rem;
-    --byob-control-shadow: 0 10px 24px color-mix(in oklch, var(--color-primary) 22%, transparent);
-    --byob-card-shadow: 0 12px 30px color-mix(in oklch, var(--color-info) 10%, transparent);
-  }
-
-  .byob-kit-skeleton {
-    --byob-control-radius: 1.125rem;
-    --byob-card-radius: 1.25rem;
-    --byob-control-shadow: 0 14px 0 color-mix(in oklch, var(--color-secondary) 36%, transparent);
-    --byob-card-shadow: 0 0 0 2px color-mix(in oklch, var(--color-primary) 22%, transparent);
-    --byob-panel-border: color-mix(in oklch, var(--color-primary) 30%, transparent);
-  }
-
-  header.byob-kit-daisyui {
-    background-image: linear-gradient(135deg, hsl(var(--a)), hsl(var(--s)));
   }
 
   header.byob-kit-shadcn-svelte {
@@ -202,30 +170,9 @@ th {
     color: hsl(var(--bc));
   }
 
-  header.byob-kit-flowbite-svelte {
-    background-image: linear-gradient(135deg, hsl(var(--p)), hsl(var(--in)) 58%, hsl(var(--a)));
-  }
-
-  header.byob-kit-skeleton {
-    background-image: radial-gradient(circle at 20% 20%, hsl(var(--a) / 0.55), transparent 26%),
-      radial-gradient(circle at 78% 12%, hsl(var(--s) / 0.5), transparent 24%),
-      linear-gradient(135deg, hsl(var(--b1)), hsl(var(--b2)));
-  }
-
   .byob-kit-shadcn-svelte .rounded-2xl,
   .byob-kit-shadcn-svelte .rounded-3xl {
     border-radius: 0.5rem;
-  }
-
-  .byob-kit-flowbite-svelte .rounded-2xl,
-  .byob-kit-flowbite-svelte .rounded-3xl {
-    border-radius: 0.75rem;
-  }
-
-  .byob-kit-skeleton .rounded-2xl,
-  .byob-kit-skeleton .rounded-3xl {
-    border-radius: 1.25rem;
-    border-width: 2px;
   }
 
   .byob-kit-shadcn-svelte [class*='shadow'],
