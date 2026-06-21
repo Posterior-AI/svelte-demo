@@ -9,7 +9,7 @@
 
 **Ship a full web app from one prompt, then keep editing in a three-pane workspace.**
 
-[Workspace Layout](#-workspace-layout) • [Workflow](#-professional-workflow) • [Supabase](#-supabase-integration)
+[Workspace Layout](#-workspace-layout) • [Workflow](#-professional-workflow) • [Codex](#-codex-in-byob)
 
 </div>
 
@@ -36,7 +36,8 @@ BYOB (Build Your Own Buzz) is an AI-powered workspace that orchestrates everythi
 - **BYOB DB:** Fully managed SQLite storage with schema exploration, SQL scratchpad, and distributed scaling.
 - **Visual Editing Mode:** Click inside the preview and have any element update the exact file for you.
 - **Live Web Search:** Agents pull current docs and references as you craft features.
-- **Model Swapping:** Flip between Gemini 3.1, Grok, GPT-5.4, and Claude 3.7 to match the task.
+- **Model Swapping:** Flip between Gemini, Grok, GPT Codex, and Claude to match the task.
+- **Native Codex Access:** Use BYOB-billed container Codex from chat, remote Codex TUI, or local-billed SSH access when you want a local terminal attached to the project container.
 - **One-Click Deploy:** Publish frontend+backend to Cloudflare’s edge with zero DevOps work.
 - **Image Understanding:** Upload wireframes or screenshots and receive pixel-precise Svelte code.
 - **Voice Coding:** Dictate database requirements or UI logic and let the assistant implement it.
@@ -53,18 +54,18 @@ Choose the optimal brain for the task.
 | --- | --- | --- |
 | **Gemini 3.1** | Large context, fast coding for sprawling UI systems | Google's finest |
 | **Grok** | Creative problem solving and experimental flows | xAI's rebel |
-| **GPT-5.4** | Deep reasoning for complex backend logic | OpenAI's best |
+| **GPT Codex** | Deep reasoning for complex backend logic and container-native edits | OpenAI's best |
 | **Claude 3.7** | Thoughtful architecture guidance and beautiful UI | Anthropic's ally |
 
 ## 🛠️ Dual Operating Modes
 
-- **Chat Mode (💬)** – Strategic planning and analysis. Use it for architectural reviews, deep explanations, schema brainstorming, and defining frontend/back-end approaches.
-- **Tool Mode (🛠️)** – Code generation and execution. Generate components, edit files, create APIs, and install dependencies with automated tooling commands.
+- **Chat Mode (💬)** – Strategic planning and analysis. Use it for architectural reviews, deep explanations, schema brainstorming, and codebase inspection.
+- **Act Mode (🛠️)** – Code generation and execution. Generate components, edit files, create APIs, and install dependencies with automated tooling commands.
 
 ## 🔄 Professional Workflow
 
 1. **Strategize** – Outline objectives and architecture in Chat Mode.
-2. **Execute** – Switch to Tool Mode and Quick Actions to generate files, routes, and dependencies.
+2. **Execute** – Switch to Act Mode and Quick Actions to generate files, routes, and dependencies.
 3. **Review & Refine** – Monitor what the assistant produces, adjust in the editor, and test interactions in the Live Preview.
 4. **Save Progress** – Snapshot stable milestones with descriptive notes for instant rollback.
 
@@ -92,6 +93,22 @@ BYOB DB is a fully managed, scalable SQLite data service that removes provisioni
 - **Schema Explorer:** Inspect tables, columns, and ER diagrams inside the browser.
 - **SQL Scratchpad:** Run read-only queries for debugging or analytics without leaving the workspace.
 - **Managed & Super Scalable:** The platform keeps SQLite fast across distributed edge nodes with zero ops.
+
+## 🤖 Codex In BYOB
+
+BYOB supports Codex in three separate ways, so billing and permissions stay explicit.
+
+- **Workspace chat Codex:** In the BYOB chat UI, GPT-backed Codex runs inside the project container through AIR. Chat Mode can inspect the project and use shell context for answers; Act Mode can edit files, install dependencies, run checks, and make changes. Usage is billed through BYOB credits.
+- **Remote Codex TUI:** Use BYOB Agent MCP to generate a `codex --remote ...` command that connects your local terminal UI to the Codex app-server already running in the project container. Model usage is still routed through AIR and billed with BYOB credits.
+- **SSH Codex access:** Use BYOB Agent MCP to generate SSH instructions when you want local Codex to work against the project container with native shell access. Model usage is billed to your local Codex/OpenAI account, not BYOB credits.
+
+Install the BYOB connector once:
+
+```bash
+npx -y byob-agent-mcp codex install
+```
+
+After approving project access, BYOB shows project-specific remote and SSH commands from the workspace settings.
 
 ## 🚀 Ready to Supercharge Your Development?
 

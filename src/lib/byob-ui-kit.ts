@@ -1,1 +1,1 @@
-export const BYOB_UI_KIT = 'template-neutral';
+export const BYOB_UI_KIT = 'flowbite-svelte';
