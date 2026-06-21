@@ -29,6 +29,7 @@
   import Users from '~icons/heroicons/users';
   import { BYOB_UI_KIT } from '$lib/byob-ui-kit';
   import ApiWelcome from './ApiWelcome.svelte';
+  import UiKitSmoke from './UiKitSmoke.svelte';
 
   const uiKitClass = `byob-kit byob-kit-${BYOB_UI_KIT}`;
   const uiKitLabel = BYOB_UI_KIT;
@@ -299,6 +300,8 @@
       </div>
     </div>
   </section>
+
+  <UiKitSmoke />
 
   <!-- FEATURES -->
   <section class="py-16 sm:py-24">
