@@ -31,7 +31,7 @@
   import ApiWelcome from './ApiWelcome.svelte';
 
   const uiKitClass = `byob-kit byob-kit-${BYOB_UI_KIT}`;
-  const uiKitLabel = BYOB_UI_KIT === 'template-neutral' ? 'template neutral' : BYOB_UI_KIT;
+  const uiKitLabel = BYOB_UI_KIT;
 
   const workspaceFeatures = [
     {
@@ -144,9 +144,9 @@
     },
     {
       icon: CommandLine,
-      title: 'Codex Agent MCP',
+      title: 'Native Codex Access',
       description:
-        'Connect Codex to approved BYOB projects for project context, code edits, testing, deploys, DNS, and billing links.',
+        'Use container Codex from chat, connect a remote Codex TUI through AIR, or attach local-billed Codex over SSH.',
     },
     {
       icon: DocumentDuplicate,
@@ -238,9 +238,9 @@
   ];
 
   const agentHighlights = [
-    'Approve scoped project access from BYOB',
-    'Read context, edit files, test previews, and deploy',
-    'Manage custom domains, DNS instructions, credits, and billing links',
+    'UI and remote Codex are billed through BYOB credits',
+    'SSH mode uses your local Codex or OpenAI billing',
+    'Chat can inspect; Act can edit, install, test, and deploy',
   ];
 </script>
 
@@ -295,7 +295,7 @@
       </div>
       <div class="text-center text-[hsl(var(--bc)/0.8)] flex items-center justify-center gap-2 bg-[hsl(var(--b1))] rounded-lg p-4 border border-[hsl(var(--b3))] max-w-2xl mx-auto shadow-sm">
           <LightBulb class="w-5 h-5 text-[hsl(var(--in))]" />
-          <span class="font-semibold">Tip:</span> Start with a prompt, review the preflight plan, then let Tool Mode implement.
+          <span class="font-semibold">Tip:</span> Start with a prompt, review the preflight plan, then let Act Mode implement.
       </div>
     </div>
   </section>
@@ -392,7 +392,7 @@
                           <WrenchScrewdriver class="h-7 w-7" />
                       </div>
                       <div>
-                          <h3 class="text-2xl font-bold">Tool Mode</h3>
+                          <h3 class="text-2xl font-bold">Act Mode</h3>
                           <p class="text-[hsl(var(--in))] font-semibold">Code Generation & Execution</p>
                       </div>
                   </div>
@@ -413,7 +413,7 @@
         <div class="text-center">
             <h2 class="text-3xl md:text-4xl font-bold">Professional Workflow</h2>
             <p class="mt-3 text-lg text-[hsl(var(--bc)/0.7)] max-w-2xl mx-auto">
-                Start conversationally, approve the shape, implement with Tool Mode, then test and deploy.
+                Start conversationally, approve the shape, implement with Act Mode, then test and deploy.
             </p>
         </div>
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -432,7 +432,7 @@
                     : step === 2
                     ? 'Review UX direction, data choices, and the complete implementation plan.'
                     : step === 3
-                    ? 'Generate files, install dependencies, and wire services using Tool Mode.'
+                    ? 'Generate files, install dependencies, and wire services using Act Mode.'
                     : step === 4
                     ? 'Run feature-based or full-site tests, save checkpoints, and refine safely.'
                     : 'Publish to a BYOB URL, connect domains, and inspect production analytics.'}
@@ -461,7 +461,7 @@
               {icon: GlobeAlt, title: 'Custom Domain Wizard', desc: 'Connect root or subdomains with guided DNS records, verification, and automatic SSL activation.'},
               {icon: DocumentChartBar, title: 'Deployment Analytics', desc: 'Inspect live Worker traffic, errors, CPU timing, subrequests, and deployment status.'},
               {icon: PlayCircle, title: 'Testing Agent', desc: 'Run full-site or feature-based tests with extension support and detailed reports.'},
-              {icon: CommandLine, title: 'Codex Agent MCP', desc: 'Let Codex inspect context, edit code, test previews, deploy, and manage platform actions from approved projects.'},
+              {icon: CommandLine, title: 'Native Codex Access', desc: 'Use BYOB-billed container Codex from chat or remote TUI, or use local-billed SSH for native shell access.'},
               {icon: Clock, title: 'Context + Model Guardrails', desc: 'Track context fill and keep one model per session to reduce long-thread drift.'},
               {icon: CircleStack, title: 'Pay-As-You-Go + Subscriptions', desc: 'Choose flexible top-ups or Pro/Max monthly plans with included credits.'},
               {icon: Eye, title: 'Live Preview', desc: 'Real-time, interactive preview with instant updates. No manual compilation needed.'},
@@ -566,14 +566,14 @@
                       <CommandLine class="w-7 h-7" />
                   </div>
                   <div>
-                      <h2 class="text-3xl font-bold">BYOB Agent MCP for Codex</h2>
+                      <h2 class="text-3xl font-bold">Native Codex for BYOB projects</h2>
                       <p class="text-[hsl(var(--bc)/0.7)]">
-                          Install the BYOB agent connector once, approve the projects it can touch, and let Codex work directly against your BYOB workspace.
+                          Use Codex from the BYOB chat UI, connect a remote Codex TUI through AIR, or attach local Codex over SSH when you want native shell access to the project container.
                       </p>
                   </div>
               </div>
               <div class="mt-8 rounded-2xl border border-[hsl(var(--b3))] bg-[hsl(var(--b2))] p-5 font-mono text-sm text-[hsl(var(--bc)/0.8)]">
-                  npx -y byob-agent-mcp codex install --client-name "Codex"
+                  npx -y byob-agent-mcp codex install
               </div>
               <div class="mt-6 grid gap-4 md:grid-cols-3">
                   {#each agentHighlights as item}

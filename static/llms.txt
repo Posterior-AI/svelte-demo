@@ -1,0 +1,46 @@
+# BYOB Svelte Demo - AI And Codex Guide
+
+This project is a BYOB-generated SvelteKit template. It uses Svelte 5, SvelteKit, Vite, Tailwind CSS v4, and the selected BYOB UI kit. Keep generated projects as standard editable SvelteKit apps.
+
+## BYOB Workspace
+
+- The editor, chat, and live preview run together in the BYOB workspace.
+- Chat Mode is for planning, explanation, architecture, and inspection.
+- Act Mode is for file edits, dependency installs, checks, tests, and implementation.
+- Prefer Svelte 5 runes: `$state`, `$derived`, `$effect`, and `$props`.
+- Do not remove BYOB preview, env, deployment, or project-runner glue unless explicitly changing platform integration.
+
+## Codex In BYOB
+
+BYOB supports three Codex paths with different billing behavior.
+
+1. Workspace chat Codex
+   - Flow: BYOB UI -> AIR -> project container -> Codex app-server.
+   - Available for GPT-backed new chats.
+   - Chat Mode can inspect/read project state and use shell context for answers.
+   - Act Mode can edit files, install packages, run checks, and make project changes.
+   - Billing: BYOB credits through AIR.
+
+2. Remote Codex TUI
+   - Flow: local terminal UI -> BYOB AIR gateway -> project container Codex app-server.
+   - Use the project-specific `codex --remote ...` command shown by BYOB.
+   - Billing: BYOB credits through AIR.
+
+3. SSH Codex access
+   - Flow: local Codex/OpenAI client -> SSH gateway -> project container shell.
+   - Use this when you want native shell editing from a local Codex session.
+   - Billing: local Codex/OpenAI account or API key, not BYOB credits.
+
+## Local Connector Setup
+
+Install BYOB Agent MCP once:
+
+```bash
+npx -y byob-agent-mcp codex install
+```
+
+After OAuth approval, use the BYOB workspace settings for the exact project-specific remote and SSH commands.
+
+## Deployment
+
+BYOB deploys standard SvelteKit output to BYOB-managed Cloudflare-backed infrastructure. Use workspace deploy controls for production publishes, custom domains, and analytics.
