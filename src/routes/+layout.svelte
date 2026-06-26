@@ -4,13 +4,11 @@
 	let { children } = $props();
 	import { onMount } from 'svelte';
 	import { browser, dev } from '$app/environment';
+	import { env } from '$env/dynamic/public';
 
-	const fruitalyticsEndpoint = String(import.meta.env.PUBLIC_FRUITALYTICS_ENDPOINT || '').replace(
-		/\/$/,
-		''
-	);
-	const fruitalyticsSiteId = String(import.meta.env.PUBLIC_FRUITALYTICS_SITE_ID || '');
-	const fruitalyticsWriteKey = String(import.meta.env.PUBLIC_FRUITALYTICS_WRITE_KEY || '');
+	const fruitalyticsEndpoint = String(env.PUBLIC_FRUITALYTICS_ENDPOINT || '').replace(/\/$/, '');
+	const fruitalyticsSiteId = String(env.PUBLIC_FRUITALYTICS_SITE_ID || '');
+	const fruitalyticsWriteKey = String(env.PUBLIC_FRUITALYTICS_WRITE_KEY || '');
 	const fruitalyticsEnabled = !!(
 		fruitalyticsEndpoint &&
 		fruitalyticsSiteId &&
