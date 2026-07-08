@@ -28,3 +28,7 @@ mcp_go_bin
 .dev.vars*
 !.dev.vars.example
 .browser-console-logs
+
+# BYOB platform checkpoint logs
+logs/git-save.log
+logs/last-git-save.json
