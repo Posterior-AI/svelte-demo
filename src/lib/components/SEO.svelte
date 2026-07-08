@@ -17,9 +17,23 @@
 		applicationName = 'BYOB App'
 	} = $props();
 
-	let siteUrl = $derived($page.url ? $page.url.origin : 'https://byob.page');
+	function normalizedOrigin(origin: string) {
+		if (!origin) return '';
+		try {
+			const url = new URL(origin);
+			if (url.hostname === 'sveltekit-prerender') return '';
+			if (url.protocol === 'http:' && (url.hostname.endsWith('.byob.page') || url.hostname.endsWith('.byob.studio'))) {
+				url.protocol = 'https:';
+			}
+			return url.origin;
+		} catch {
+			return '';
+		}
+	}
+
+	let siteUrl = $derived(normalizedOrigin($page.url?.origin || ''));
 	let currentPath = $derived($page.url ? $page.url.pathname : '/');
-	let finalCanonical = $derived(canonical || `${siteUrl}${currentPath}`);
+	let finalCanonical = $derived(canonical || (siteUrl ? `${siteUrl}${currentPath}` : ''));
 	let robots = $derived(`${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`);
 	let ogImage = $derived(ogImages[0]?.url || twitterImage || '');
 	let breadcrumbSchema = $derived(
@@ -31,7 +45,7 @@
 						'@type': 'ListItem',
 						position: index + 1,
 						name: crumb.name,
-						item: crumb.path.startsWith('http') ? crumb.path : `${siteUrl}${crumb.path}`
+						item: crumb.path.startsWith('http') || !siteUrl ? crumb.path : `${siteUrl}${crumb.path}`
 					}))
 				}
 			: {}
@@ -46,11 +60,15 @@
 	<meta name="keywords" content={keywords} />
 	<meta name="application-name" content={applicationName} />
 	<meta name="robots" content={robots} />
-	<link rel="canonical" href={finalCanonical} />
+	{#if finalCanonical}
+		<link rel="canonical" href={finalCanonical} />
+	{/if}
 
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
-	<meta property="og:url" content={finalCanonical} />
+	{#if finalCanonical}
+		<meta property="og:url" content={finalCanonical} />
+	{/if}
 	<meta property="og:type" content={type} />
 	<meta property="og:site_name" content={applicationName} />
 	{#if ogImage}
