@@ -1,0 +1,24 @@
+# {{SITE_NAME}}
+
+> A full-stack web application built with Svelte 5, SvelteKit, and Tailwind CSS v4, deployed on Cloudflare.
+
+
+Key commands: `npm run dev` (start), `npm run build` (production), `npm run preview` (preview build), `npm run check` (type-check), `npm run lint` (lint).
+
+## Docs
+
+- [Svelte](https://svelte.dev/docs/svelte/overview): Core Svelte 5 docs (runes, bindings, reactivity)
+- [SvelteKit](https://svelte.dev/docs/kit): Routing, layouts, server, adapters
+- [Tailwind CSS](https://tailwindcss.com/docs): Utility-first CSS framework
+
+## Routes
+
+- [src/routes/+page.svelte](src/routes/+page.svelte): Home page
+- [src/routes/+layout.svelte](src/routes/+layout.svelte): Root layout with platform connectors
+
+## Optional
+
+- [src/app.html](src/app.html): HTML shell with platform scripts
+- [vite.config.ts](vite.config.ts): Vite config (platform-managed, do not edit)
+- [package.json](package.json): Dependencies and scripts
+- [SvelteKit Cloudflare adapter](https://svelte.dev/docs/kit/adapter-cloudflare): Deployment docs
