@@ -33,6 +33,8 @@ export const GET: RequestHandler = async ({ request, platform, url }) => {
 	if (!authorized(request, token)) return response({ ok: false, error: 'Unauthorized' }, 401);
 
 	const action = url.searchParams.get('action') || 'list';
+
+	// ── Head / Get ──────────────────────────────────────────────────────
 	if (action === 'get' || action === 'head') {
 		const key = url.searchParams.get('key') || '';
 		if (!key) return response({ ok: false, error: 'key is required' }, 400);
@@ -43,9 +45,41 @@ export const GET: RequestHandler = async ({ request, platform, url }) => {
 				headers: jsonHeaders({ 'Content-Type': object.httpMetadata?.contentType || 'application/octet-stream' }),
 			});
 		}
-		return response({ object: { key, size: object.size ?? null, uploaded: object.uploaded ?? null } });
+		// head: return metadata only
+		return response({
+			ok: true,
+			object: {
+				key,
+				size: object.size ?? null,
+				uploaded: object.uploaded ?? null,
+				contentType: object.httpMetadata?.contentType ?? null,
+				cacheControl: object.httpMetadata?.cacheControl ?? null,
+				contentDisposition: object.httpMetadata?.contentDisposition ?? null,
+				etag: object.etag ?? null,
+				customMetadata: object.customMetadata ?? {},
+			},
+		});
 	}
 
+	// ── Copy (GET-style proxy for copy action) ──────────────────────────
+	if (action === 'copy') {
+		const sourceKey = url.searchParams.get('source_key') || '';
+		const destKey = url.searchParams.get('dest_key') || '';
+		if (!sourceKey || !destKey) return response({ ok: false, error: 'source_key and dest_key are required' }, 400);
+		const source = await bucket.get(sourceKey);
+		if (!source) return response({ ok: false, error: 'Source object not found' }, 404);
+		const body = await source.arrayBuffer();
+		const httpMetadata: Record<string, string> = {
+			contentType: url.searchParams.get('content_type') || source.httpMetadata?.contentType || 'application/octet-stream',
+		};
+		const putOptions: Record<string, any> = { httpMetadata, customMetadata: source.customMetadata ?? {} };
+		const sc = url.searchParams.get('storage_class');
+		if (sc === 'STANDARD_IA' || sc === 'STANDARD') putOptions.storageClass = sc;
+		await bucket.put(destKey, body, putOptions);
+		return response({ ok: true, source_key: sourceKey, dest_key: destKey });
+	}
+
+	// ── List ────────────────────────────────────────────────────────────
 	const listing = await bucket.list({
 		prefix: url.searchParams.get('prefix') || undefined,
 		cursor: url.searchParams.get('cursor') || undefined,
@@ -69,14 +103,69 @@ export const POST: RequestHandler = async ({ request, platform }) => {
 	if (!authorized(request, token)) return response({ ok: false, error: 'Unauthorized' }, 401);
 
 	const form = await request.formData();
+	const action = String(form.get('action') || 'put').trim();
+
+	// ── Copy (POST-style) ───────────────────────────────────────────────
+	if (action === 'copy') {
+		const sourceKey = String(form.get('source_key') || '').trim();
+		const destKey = String(form.get('dest_key') || '').trim();
+		if (!sourceKey || !destKey) return response({ ok: false, error: 'source_key and dest_key are required' }, 400);
+		const source = await bucket.get(sourceKey);
+		if (!source) return response({ ok: false, error: 'Source object not found' }, 404);
+		const body = await source.arrayBuffer();
+		const httpMetadata: Record<string, string> = {
+			contentType: String(form.get('content_type') || source.httpMetadata?.contentType || 'application/octet-stream'),
+		};
+		const putOptions: Record<string, any> = { httpMetadata, customMetadata: source.customMetadata ?? {} };
+		const sc = form.get('storage_class');
+		if (sc === 'STANDARD_IA' || sc === 'STANDARD') putOptions.storageClass = sc;
+		try { await bucket.put(destKey, body, putOptions); }
+		catch { delete putOptions.storageClass; await bucket.put(destKey, body, putOptions); }
+		return response({ ok: true, source_key: sourceKey, dest_key: destKey });
+	}
+
+	// ── Batch delete ────────────────────────────────────────────────────
+	if (action === 'delete-many') {
+		const rawKeys = String(form.get('keys') || '').trim();
+		const keys = rawKeys.split('\n').map(k => k.trim()).filter(Boolean);
+		if (!keys.length) return response({ ok: false, error: 'keys are required' }, 400);
+		if (keys.length > 1000) return response({ ok: false, error: 'Cannot delete more than 1000 objects per request' }, 400);
+
+		const results: Array<{ key: string; ok: boolean; size?: number; error?: string }> = [];
+		for (const key of keys) {
+			try {
+				// Best-effort head for size tracking
+				let size: number | undefined;
+				if (bucket.head) {
+					const meta = await bucket.head(key).catch(() => null);
+					size = meta?.size ?? undefined;
+				}
+				await bucket.delete(key);
+				results.push({ key, ok: true, size });
+			} catch (err: any) {
+				results.push({ key, ok: false, error: String(err?.message || err) });
+			}
+		}
+		const deleted = results.filter(r => r.ok);
+		const failed  = results.filter(r => !r.ok);
+		return response({ ok: failed.length === 0, deleted, failed, total: keys.length });
+	}
+
+	// ── Put (upload) ─────────────────────────────────────────────────────
 	const file = form.get('file');
 	const key = String(form.get('key') || '').trim();
 	if (!(file instanceof File)) return response({ ok: false, error: 'file is required' }, 400);
 	if (!key) return response({ ok: false, error: 'key is required' }, 400);
-	await bucket.put(key, await file.arrayBuffer(), {
+
+	const putOptions: Record<string, any> = {
 		httpMetadata: { contentType: file.type || 'application/octet-stream' },
 		customMetadata: { originalName: file.name },
-	});
+	};
+	const sc = form.get('storage_class');
+	if (sc === 'STANDARD_IA' || sc === 'STANDARD') putOptions.storageClass = sc;
+
+	try { await bucket.put(key, await file.arrayBuffer(), putOptions); }
+	catch { delete putOptions.storageClass; await bucket.put(key, await file.arrayBuffer(), putOptions); }
 	return response({ ok: true, object: { key, size: file.size, contentType: file.type } });
 };
 
