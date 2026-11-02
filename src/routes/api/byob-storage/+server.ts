@@ -3,6 +3,7 @@ import type { RequestHandler } from './$types';
 import {
 	jsonHeaders,
 	platformEnv,
+	primUrl,
 	storageBindingName,
 	storageToken,
 } from '$lib/server/byob-platform';
@@ -95,12 +96,50 @@ export const GET: RequestHandler = async ({ request, platform, url }) => {
 	});
 };
 
-export const POST: RequestHandler = async ({ request, platform }) => {
+export const POST: RequestHandler = async ({ request, platform, url }) => {
 	const env = platformEnv({ platform });
 	const bucket = env[storageBindingName({ platform })] as any;
 	const token = storageToken({ platform });
 	if (!bucket || !token) return unavailable();
 	if (!authorized(request, token)) return response({ ok: false, error: 'Unauthorized' }, 401);
+
+	const urlAction = url.searchParams.get('action') || '';
+
+	// ── Presigned URL relay (JSON body → PRIM) ─────────────────────────
+	if (urlAction === 'presigned-url') {
+		const prim = primUrl({ platform });
+		if (!prim) return response({ ok: false, error: 'BYOB_PRIM_URL not configured' }, 503);
+		try {
+			const body = await request.json();
+			const resp = await fetch(`${prim}/api/storage/worker/presigned-url`, {
+				method: 'POST',
+				headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
+			});
+			const data = await resp.json();
+			return response(data, resp.status);
+		} catch (e: any) {
+			return response({ ok: false, error: e?.message || 'presigned-url relay failed' }, 502);
+		}
+	}
+
+	// ── Temporary credentials relay (JSON body → PRIM) ─────────────────
+	if (urlAction === 'temporary-credentials') {
+		const prim = primUrl({ platform });
+		if (!prim) return response({ ok: false, error: 'BYOB_PRIM_URL not configured' }, 503);
+		try {
+			const body = await request.json();
+			const resp = await fetch(`${prim}/api/storage/worker/temporary-credentials`, {
+				method: 'POST',
+				headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
+			});
+			const data = await resp.json();
+			return response(data, resp.status);
+		} catch (e: any) {
+			return response({ ok: false, error: e?.message || 'temporary-credentials relay failed' }, 502);
+		}
+	}
 
 	const form = await request.formData();
 	const action = String(form.get('action') || 'put').trim();

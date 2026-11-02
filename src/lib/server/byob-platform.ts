@@ -23,6 +23,10 @@ export function storageBindingName(event: Pick<RequestEvent, 'platform'>): strin
 	return runtimeString(event, 'BYOB_STORAGE_BINDING_NAME') || 'STORAGE';
 }
 
+export function primUrl(event: Pick<RequestEvent, 'platform'>): string {
+	return runtimeString(event, 'BYOB_PRIM_URL');
+}
+
 export function jsonHeaders(extra: HeadersInit = {}): HeadersInit {
 	return {
 		'Access-Control-Allow-Origin': '*',
